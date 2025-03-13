@@ -509,9 +509,29 @@
             border-top: 1px solid rgba(69, 123, 157, 0.1);
         }
         
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
         .footer-text {
             opacity: 0.8;
             font-size: 0.9rem;
+        }
+        
+        .crafted-with-love {
+            margin-top: 1rem;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            display: inline-block;
+            background-color: rgba(231, 111, 81, 0.08);
+            border-radius: 30px;
         }
         
         /* Animation Classes */
@@ -660,6 +680,7 @@
             <div class="nav-links">
                 <a href="#expertise" class="nav-link">Expertise</a>
                 <a href="#journey" class="nav-link">Journey</a>
+                <a href="trilegal.html" class="nav-link">Trilegal Job</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             <div class="hamburger" id="hamburger">
@@ -682,7 +703,7 @@
                     <a href="#contact" class="cta-button fade-in">Get in Touch</a>
                 </div>
                 <div class="hero-image fade-in">
-                    <img src="me.png" alt="Drishti Ranjan" class="profile-picture">
+                    <img src="me.jpeg" alt="Drishti Ranjan" class="profile-picture">
                 </div>
             </div>
         </div>
@@ -821,7 +842,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title fade-in">Let's Connect</h2>
@@ -843,8 +863,9 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
+        <div class="container footer-container">
             <p class="footer-text">© 2025 Drishti Ranjan. All rights reserved.</p>
+            <div class="crafted-with-love">Crafted with ❤️ for folks at Trilegal</div>
         </div>
     </footer>
 
