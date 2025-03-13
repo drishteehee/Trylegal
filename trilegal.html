@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drishti Ranjan - Your Perfect Bridge | Trilegal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1d3557;
+            --secondary: #457b9d;
+            --accent: #e76f51;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: var(--light);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .nav-link:not(.resume-link)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-link:not(.resume-link):hover::after {
+            width: 100%;
+        }
+        
+        .resume-link {
+            background-color: var(--accent);
+            color: white !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+        
+        .resume-link:hover {
+            background-color: #d65f41;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 111, 81, 0.2);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 8.5rem;
+            padding-bottom: 5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+        
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .hero-tag {
+            display: inline-block;
+            background-color: rgba(231, 111, 81, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-title {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(231, 111, 81, 0.3);
+            display: inline-block;
+            transition: var(--transition);
+        }
+        
+        .cta-button:hover {
+            background-color: #d65f41;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(231, 111, 81, 0.4);
+        }
+        
+        /* Journey Section */
+        .journey {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .journey-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .journey-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .journey-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(69, 123, 157, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .journey-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.7rem;
+            color: var(--primary);
+        }
+        
+        .journey-description {
+            color: #6c757d;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        /* Why This Role Section */
+        .why-role {
+            padding: 5rem 0;
+            background-color: rgba(69, 123, 157, 0.05);
+        }
+        
+        .why-role-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .quote-highlight {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .why-role-points {
+            margin-top: 1.5rem;
+        }
+        
+        .why-point {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .why-icon {
+            color: var(--accent);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+        
+        .why-text h4 {
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+        
+        .why-text p {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+        }
+        
+        .skills-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .skill-tab {
+            padding: 0.8rem 1.5rem;
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            border-radius: 30px;
+            color: var(--secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+            margin: 0.3rem;
+        }
+        
+        .skill-tab.active, .skill-tab:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .skills-content {
+            position: relative;
+            min-height: 300px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 2rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .skill-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+        
+        .skill-item.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(69, 123, 157, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-size: 1.8rem;
+            padding: 1rem;
+        }
+        
+        .skill-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .skill-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.7rem;
+            position: relative;
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Approach Section */
+        .approach {
+            padding: 5rem 0;
+            background-color: rgba(69, 123, 157, 0.05);
+        }
+        
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .approach-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .approach-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .approach-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1rem;
+            font-weight: 600;
+        }
+        
+        .approach-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .approach-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Commitment Section */
+        .commitment {
+            padding: 5rem 0;
+        }
+        
+        .commitment-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .commitment-content p {
+            color: #6c757d;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        
+        /* Note Section */
+        .note {
+            padding: 5rem 0;
+            background-color: rgba(69, 123, 157, 0.05);
+            text-align: center;
+        }
+        
+        .note-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .note-text {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .note-signature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .note-name {
+            font-family: 'Montserrat', cursive;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+        
+        .note-title {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .crafted-with-love {
+            margin-top: 3rem;
+            text-align: center;
+            font-family: 'Montserrat', cursive;
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            display: inline-block;
+            background-color: rgba(231, 111, 81, 0.08);
+            border-radius: 30px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-description {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        
+        .cta-primary:hover {
+            background-color: #d65f41;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .cta-secondary {
+            background-color: transparent;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            border: 2px solid white;
+            transition: var(--transition);
+        }
+        
+        .cta-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f1f5f8;
+            color: var(--primary);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(69, 123, 157, 0.1);
+        }
+        
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .back-link i {
+            margin-right: 0.3rem;
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 0;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--light);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                padding: 1.5rem;
+                gap: 1.5rem;
+                align-items: center;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .why-role-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .skill-item {
+                padding: 1.5rem 1rem;
+            }
+            
+            .skill-title {
+                font-size: 1.3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .skill-tab {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .note-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Drishti Ranjan</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#journey" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#approach" class="nav-link">Approach</a>
+                <a href="#contact" class="nav-link resume-link">Contact Me</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <span class="hero-tag fade-in">My Dream Role at Trilegal</span>
+            <h1 class="hero-title fade-in">The Bridge You're Looking For</h1>
+            <h2 class="hero-subtitle fade-in">Connecting Legal Expertise with Technology</h2>
+            <p class="hero-description fade-in">
+                When I read Trilegal's Manager - Legal Technology job description, I immediately recognized the role I've been preparing for. This isn't just another application—this is me reaching out to say I've found my professional home.
+            </p>
+            <a href="#journey" class="cta-button fade-in">Why I'm Your Bridge</a>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section class="journey" id="journey">
+        <div class="container">
+            <h2 class="section-title fade-in">My Experience</h2>
+            <p class="section-subtitle fade-in">Three key experiences that have prepared me for this role</p>
+            
+            <div class="journey-grid">
+                <div class="journey-card fade-in">
+                    <div class="journey-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="journey-title">Fintech Regulatory Experience</h3>
+                    <p class="journey-description">
+                        At Setu, I created regulatory repositories for account aggregator modules and developed data protection audit questionnaires, translating complex legal requirements into clear technical guidelines for product teams.
+                    </p>
+                </div>
+                
+                <div class="journey-card fade-in">
+                    <div class="journey-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3 class="journey-title">Legal Tech Consulting</h3>
+                    <p class="journey-description">
+                        As an Independent Legal Tech Consultant, I developed websites for lawyers and implemented analytics tools, gaining firsthand experience with the challenges and opportunities of technology adoption in legal practice.
+                    </p>
+                </div>
+                
+                <div class="journey-card fade-in">
+                    <div class="journey-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="journey-title">Law Firm Technology Perspective</h3>
+                    <p class="journey-description">
+                        At Samvad Partners, I've reviewed technology agreements and privacy policies, developing a practical understanding of the enterprise-level challenges that law firms face when implementing new technologies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why This Role Section -->
+    <section class="why-role" id="why-role">
+        <div class="container">
+            <h2 class="section-title fade-in">Why This Role Matters to Me</h2>
+            
+            <div class="why-role-content fade-in">
+                <p>
+                    When I read <a href="https://trilegal.com/careers/" target="_blank">Trilegal's job description</a>, I found the exact intersection I've been navigating in my career:
+                </p>
+                
+                <div class="quote-highlight">
+                    "As our Manager - Legal Technology, you'll be the bridge between the legal and tech worlds."
+                </div>
+                
+                <div class="why-role-points">
+                    <div class="why-point">
+                        <div class="why-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="why-text">
+                            <h4>The Gap I've Witnessed</h4>
+                            <p>I've seen brilliant lawyers limited by outdated technology and tech solutions fail because they don't understand legal workflows. This gap isn't just inefficient—it prevents legal professionals from delivering their best work.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="why-point">
+                        <div class="why-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="why-text">
+                            <h4>Why Trilegal Specifically</h4>
+                            <p>Most firms force lawyers to become technologists or expect technologists to understand legal nuances. Trilegal recognizes the need for a dedicated bridge-builder—exactly the role I've been preparing for.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">What I Bring to Trilegal</h2>
+            
+            <div class="skills-tabs fade-in">
+                <button class="skill-tab active" data-tab="translator">Translator</button>
+                <button class="skill-tab" data-tab="problem-solver">Problem-Solver</button>
+                <button class="skill-tab" data-tab="educator">Educator</button>
+                <button class="skill-tab" data-tab="innovator">Innovator</button>
+            </div>
+            
+            <div class="skills-content fade-in">
+                <div class="skill-item active" id="translator">
+                    <div class="skill-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="skill-title">The Translator's Mindset</h3>
+                    <ul class="skill-list">
+                        <li>I help legal teams articulate needs in ways that tech vendors understand</li>
+                        <li>I explain technical constraints to legal stakeholders in relatable terms</li>
+                        <li>I've developed frameworks for mapping legal requirements to technical specifications</li>
+                        <li>During my Setu internship, I translated compliance requirements into product features</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-item" id="problem-solver">
+                    <div class="skill-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="skill-title">The Problem-Solver's Toolkit</h3>
+                    <ul class="skill-list">
+                        <li>I break complex challenges into manageable components</li>
+                        <li>I identify underlying needs, not just surface-level requests</li>
+                        <li>I think in terms of systems and processes, not just point solutions</li>
+                        <li>I balance ideal outcomes with practical constraints for implementable solutions</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-item" id="educator">
+                    <div class="skill-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="skill-title">The Educator's Patience</h3>
+                    <ul class="skill-list">
+                        <li>I communicate complex concepts in clear, accessible language</li>
+                        <li>I develop training materials for different learning styles</li>
+                        <li>I approach change management as essential to technical implementation</li>
+                        <li>As a Program Coordinator, I designed courses for legal professionals on data privacy</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-item" id="innovator">
+                    <div class="skill-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="skill-title">The Innovator's Curiosity</h3>
+                    <ul class="skill-list">
+                        <li>I actively follow legal technology trends and developments</li>
+                        <li>I maintain a network of contacts in both legal and technology fields</li>
+                        <li>I evaluate innovations based on practical value, not just novelty</li>
+                        <li>I'm committed to finding the right solution, not just the newest one</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach" id="approach">
+        <div class="container">
+            <h2 class="section-title fade-in">Initial Approach</h2>
+            <p class="section-subtitle fade-in">How I would collaborate with your team to drive technology adoption</p>
+            
+            <div class="approach-grid">
+                <div class="approach-item fade-in">
+                    <div class="approach-number">1</div>
+                    <h3 class="approach-title">Listen & Understand</h3>
+                    <p class="approach-description">
+                        I would first engage with stakeholders across practice areas to understand pain points, workflows, and aspirations. What technology challenges are most pressing? Where could technology enhance legal practice?
+                    </p>
+                </div>
+                
+                <div class="approach-item fade-in">
+                    <div class="approach-number">2</div>
+                    <h3 class="approach-title">Identify Opportunities</h3>
+                    <p class="approach-description">
+                        Working collaboratively with your team, I would identify quick wins for immediate value alongside strategic initiatives that align with Trilegal's longer-term vision.
+                    </p>
+                </div>
+                
+                <div class="approach-item fade-in">
+                    <div class="approach-number">3</div>
+                    <h3 class="approach-title">Build Champions</h3>
+                    <p class="approach-description">
+                        Technology adoption thrives with enthusiastic support. I would help identify and nurture "Legal Tech Champions" across practice areas who could drive adoption and provide vital feedback.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="commitment" id="commitment">
+        <div class="container">
+            <h2 class="section-title fade-in">My Commitment to Trilegal</h2>
+            
+            <div class="commitment-content fade-in">
+                <p>
+                    While I'm particularly excited about the Manager - Legal Technology role, I'm equally enthusiastic about Trilegal's innovative TMT practice. My experience at Samvad Partners, combined with my understanding of data privacy regulations and fintech ecosystem, has prepared me to add value to Trilegal in either capacity. What matters most is the opportunity to contribute to a firm that's serious about innovation in legal practice.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Note Section -->
+    <section class="note" id="note">
+        <div class="container">
+            <h2 class="section-title fade-in">A Personal Note</h2>
+            
+            <div class="note-content fade-in">
+                <p class="note-text">
+                    I don't typically get this excited about job postings. But when I read that Trilegal was looking for someone to bridge legal and technology worlds, I couldn't help but feel like this role was created for me. I'd love the chance to discuss how we could build amazing things together.
+                </p>
+                <div class="note-signature">
+                    <span class="note-name">Drishti Ranjan</span>
+                    <span class="note-title">Your Future Legal Technology Bridge</span>
+                </div>
+            </div>
+            <div class="crafted-with-love fade-in">
+                Crafted with ❤️ for folks at Trilegal
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2 class="cta-title fade-in">Let's Connect</h2>
+            <p class="cta-description fade-in">
+                I'm always open to discussing new opportunities, innovative legal tech solutions, or how we can collaborate to bridge the gap between law and technology.
+            </p>
+            <div class="cta-buttons fade-in">
+                <a href="mailto:drishtiran7an@gmail.com" class="cta-primary">Email Me</a>
+                <a href="tel:+919765212540" class="cta-secondary">Call Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2025 Drishti Ranjan. All rights reserved.</p>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Return to Main Portfolio</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Scroll effect for navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        // Initial check when page loads
+        window.addEventListener('load', fadeInOnScroll);
+        // Check on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Skills tabs functionality
+        const skillTabs = document.querySelectorAll('.skill-tab');
+        const skillItems = document.querySelectorAll('.skill-item');
+        
+        skillTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                skillTabs.forEach(t => t.classList.remove('active'));
+                skillItems.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Get the corresponding tab content and activate it
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

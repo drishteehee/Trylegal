@@ -3,55 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LexiAI - AI-Powered Contract Review Solution | Drishti Ranjan's Legal Tech Portfolio">
-    <title>LexiAI: AI-Powered Contract Review | Drishti Ranjan</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <title>Drishti Ranjan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a365d;
-            --secondary: #2d3748;
-            --accent: #4299e1;
-            --light: #e2e8f0;
-            --lighter: #f7fafc;
+            --primary: #1d3557;
+            --secondary: #457b9d;
+            --accent: #e76f51;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            color: #2d3748;
-            background-color: var(--lighter);
-            scroll-behavior: smooth;
-        }
-
-        .hero-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
         }
         
-        .card {
-            transition: all 0.3s ease;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
         }
         
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
         }
         
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            transition: all 0.3s ease;
+        a:hover {
+            color: var(--accent);
         }
         
-        .btn-primary:hover {
-            background-color: var(--accent);
-            transform: translateY(-2px);
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
+        
+        /* Navigation */
+        .navbar {
+            background-color: var(--light);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        
         .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
             position: relative;
         }
         
-        .nav-link::after {
+        .nav-link:not(.resume-link)::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -59,319 +100,832 @@
             width: 0;
             height: 2px;
             background-color: var(--accent);
-            transition: width 0.3s ease;
+            transition: var(--transition);
         }
         
-        .nav-link:hover::after {
+        .nav-link:not(.resume-link):hover::after {
             width: 100%;
         }
         
-        .highlight-add {
-            background-color: #dcfce7;
-            padding: 2px 0;
+        .hamburger {
+            display: none;
+            cursor: pointer;
         }
         
-        .highlight-remove {
-            background-color: #fee2e2;
-            text-decoration: line-through;
-            padding: 2px 0;
+        /* Hero Section */
+        .hero {
+            padding-top: 8.5rem;
+            padding-bottom: 5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
         
-        .impact-metric {
-            transition: all 0.3s ease;
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2rem;
         }
         
-        .impact-metric:hover {
-            transform: scale(1.05);
+        .hero-content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 3rem;
         }
         
-        /* Custom animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-text {
+            flex: 1;
         }
         
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
+        .hero-image {
+            flex: 0 0 auto;
         }
         
-        .animate-fadeIn {
-            animation: fadeIn 0.8s ease forwards;
+        .profile-picture {
+            width: 280px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
         
-        .animate-slideIn {
-            animation: slideIn 0.8s ease forwards;
+        .profile-picture:hover {
+            transform: scale(1.03);
         }
         
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-        
-        /* Timeline styles */
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
+        .hero-intro {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            letter-spacing: 1px;
         }
         
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-top: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: 400;
+        }
+        
+        .hero-description {
+            max-width: 650px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .cta-button {
             background-color: var(--accent);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(231, 111, 81, 0.3);
+            margin-top: 1rem;
+            display: inline-block;
+            transition: var(--transition);
         }
         
-        .timeline-container {
-            padding: 10px 40px;
+        .cta-button:hover {
+            background-color: #d65f41;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(231, 111, 81, 0.4);
+        }
+        
+        /* Expertise Section */
+        .expertise {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
             position: relative;
-            background-color: inherit;
-            width: 50%;
         }
         
-        .timeline-container::after {
+        .section-title::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            border: 4px solid var(--accent);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .left {
-            left: 0;
-        }
-        
-        .right {
+            bottom: -15px;
             left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
         }
         
-        .right::after {
-            left: -10px;
+        .section-subtitle {
+            text-align: center;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-top: -1.5rem;
+            margin-bottom: 2.5rem;
         }
         
-        .timeline-content {
-            padding: 20px 30px;
-            background-color: white;
+        .expertise-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            border-radius: 30px;
+            color: var(--secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+            margin: 0.3rem;
+        }
+        
+        .tab-button.active, .tab-button:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .expertise-content {
             position: relative;
-            border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        @media screen and (max-width: 768px) {
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-container {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .right {
-                left: 0;
-            }
-            
-            .left::after, .right::after {
-                left: 15px;
-            }
-        }
-        
-        /* Mock UI container */
-        .mock-ui {
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
+            min-height: 550px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 2.5rem;
+            margin-bottom: 3.5rem;
             overflow: hidden;
         }
         
-        .mock-ui-header {
-            background-color: #1a365d;
-            color: white;
-            padding: 12px 16px;
+        .tab-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 2.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            overflow-y: auto;
             display: flex;
+            flex-direction: column;
             align-items: center;
         }
         
-        .mock-ui-content {
-            padding: 16px;
-            background-color: #f8fafc;
+        .tab-content.active {
+            opacity: 1;
+            visibility: visible;
         }
         
-        .mock-ui-sidebar {
-            background-color: #f1f5f9;
-            border-right: 1px solid #e2e8f0;
-            padding: 16px;
+        .expertise-icon-large {
+            width: 80px;
+            height: 80px;
+            min-height: 80px;
+            border-radius: 50%;
+            background-color: rgba(69, 123, 157, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            font-size: 2rem;
+            padding: 1.5rem;
         }
         
-        .mock-ui-main {
-            padding: 16px;
+        .expertise-title-large {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+            min-height: 60px;
+        }
+        
+        .expertise-title-large:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .expertise-details {
+            max-width: 700px;
+            margin: 0 auto;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .expertise-details::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .expertise-details::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .expertise-details::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+        
+        .expertise-details::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+        
+        .expertise-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .expertise-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            color: var(--dark);
+        }
+        
+        .list-icon {
+            margin-right: 1rem;
+            color: var(--accent);
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+        }
+        
+        /* Journey Section */
+        .journey {
+            padding: 5rem 0;
+            background-color: rgba(69, 123, 157, 0.05);
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: var(--secondary);
+            opacity: 0.3;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            position: relative;
+            margin-bottom: 3rem;
+            width: 50%;
+        }
+        
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 30px;
+            margin-left: auto;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            right: -9px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            right: auto;
+            left: -9px;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 100%;
+        }
+        
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-description {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .contact-description {
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            color: #6c757d;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+        }
+        
+        .social-link:hover {
+            background-color: white;
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(231, 111, 81, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f1f5f8;
+            color: var(--primary);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(69, 123, 157, 0.1);
+        }
+        
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 80px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+                right: auto;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 20px;
+            }
+            
+            .expertise-content {
+                min-height: 500px;
+            }
+            
+            .tab-button {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 0;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--light);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                padding: 1.5rem;
+                gap: 1.5rem;
+                align-items: center;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .expertise-grid {
+                gap: 1.5rem;
+            }
+            
+            .hero-content-wrapper {
+                flex-direction: column-reverse;
+                gap: 2rem;
+            }
+            
+            .profile-picture {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .expertise-content {
+                min-height: 600px;
+                padding: 1.5rem;
+            }
+            
+            .tab-content {
+                padding: 1.5rem;
+            }
+            
+            .expertise-title-large {
+                font-size: 1.6rem;
+            }
+            
+            .expertise-details {
+                padding-right: 5px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="bg-white shadow fixed w-full z-10">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-primary">
-                <span class="text-gray-800">Drishti</span>
-                <span class="text-blue-600">Ranjan</span>
-            </a>
-            <div class="hidden md:flex space-x-8">
-                <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600"><i class="fas fa-home mr-2"></i>Home</a>
-                <a href="experience.html" class="nav-link text-gray-800 hover:text-blue-600"><i class="fas fa-briefcase mr-2"></i>Experience</a>
-                <a href="legal-tech-products.html" class="nav-link text-blue-600"><i class="fas fa-laptop-code mr-2"></i>Legal Tech Products</a>
-                <a href="thought-leadership.html" class="nav-link text-gray-800 hover:text-blue-600"><i class="fas fa-lightbulb mr-2"></i>Thought Leadership</a>
-                <a href="contact.html" class="nav-link text-gray-800 hover:text-blue-600"><i class="fas fa-envelope mr-2"></i>Contact</a>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Drishti Ranjan</a>
+            <div class="nav-links">
+                <a href="#expertise" class="nav-link">Expertise</a>
+                <a href="#journey" class="nav-link">Journey</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
-            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
-                <a href="index.html" class="text-gray-800 hover:text-blue-600"><i class="fas fa-home mr-2"></i>Home</a>
-                <a href="experience.html" class="text-gray-800 hover:text-blue-600"><i class="fas fa-briefcase mr-2"></i>Experience</a>
-                <a href="legal-tech-products.html" class="text-blue-600"><i class="fas fa-laptop-code mr-2"></i>Legal Tech Products</a>
-                <a href="thought-leadership.html" class="text-gray-800 hover:text-blue-600"><i class="fas fa-lightbulb mr-2"></i>Thought Leadership</a>
-                <a href="contact.html" class="text-gray-800 hover:text-blue-600"><i class="fas fa-envelope mr-2"></i>Contact</a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-gradient text-white pt-32 pb-20">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 animate-fadeIn">
-                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-semibold mb-4">
-                        <i class="fas fa-robot mr-1"></i>AI-Powered Contract Review
-                    </span>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">LexiAI</h1>
-                    <p class="text-xl mb-8">Revolutionizing how legal professionals review, analyze, and optimize contracts using artificial intelligence.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#demo" class="btn-primary px-6 py-3 rounded-lg font-semibold"><i class="fas fa-laptop-code mr-2"></i>View Demo</a>
-                        <a href="#case-study" class="bg-transparent border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-800 transition duration-300"><i class="fas fa-file-alt mr-2"></i>Case Study</a>
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content-wrapper">
+                <div class="hero-text">
+                    <p class="hero-intro fade-in">HELLO THERE</p>
+                    <h1 class="hero-title fade-in">I'm Drishti Ranjan</h1>
+                    <h2 class="hero-subtitle fade-in">Bridging <span class="highlight">Law</span> & <span class="highlight">Technology</span></h2>
+                    <p class="hero-description fade-in">
+                        I'm a legal professional with expertise in legal technology solutions and product management. My experience spans reviewing tech agreements, designing data protection frameworks, and implementing digital compliance strategies. I'm passionate about transforming legal services through innovative technology.
+                    </p>
+                    <a href="#contact" class="cta-button fade-in">Get in Touch</a>
+                </div>
+                <div class="hero-image fade-in">
+                    <img src="me.jpeg" alt="Drishti Ranjan" class="profile-picture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise" id="expertise">
+        <div class="container">
+            <h2 class="section-title fade-in">What I Bring to the Table</h2>
+            <p class="section-subtitle fade-in">Building the bridge between legal expertise and technological innovation</p>
+            
+            <div class="expertise-tabs fade-in">
+                <button class="tab-button active" data-tab="product">Product Interaction Experience</button>
+                <button class="tab-button" data-tab="compliance">Data & Compliance</button>
+                <button class="tab-button" data-tab="tech">Legal Tech</button>
+                <button class="tab-button" data-tab="strategy">Innovation</button>
+            </div>
+            
+            <div class="expertise-content">
+                <div class="tab-content active" id="product">
+                    <div class="expertise-icon-large">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="expertise-title-large">Product Interaction Experience</h3>
+                    <div class="expertise-details">
+                        <p>During my internship at Setu, I collaborated with both legal and product teams, helping translate regulatory requirements into actionable product features. My experience includes:</p>
+                        <ul class="expertise-list">
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Assisting in creating regulatory repositories for account aggregator modules</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Contributing to product studies for flagship fintech products</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Learning to identify legal user needs and how they translate into tech solutions</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Supporting the development of data protection audit questionnaires that balanced compliance with usability</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="md:w-1/2 mt-12 md:mt-0 pl-0 md:pl-12 animate-fadeIn delay-2">
-                    <div class="bg-white rounded-xl shadow-xl overflow-hidden">
-                        <div class="bg-blue-600 py-3 px-6 text-white flex items-center">
-                            <i class="fas fa-robot mr-2"></i>
-                            <span class="font-bold">LexiAI</span>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full flex-shrink-0">
-                                    <i class="fas fa-file-contract text-2xl"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="font-bold">Contract Review</h3>
-                                    <p class="text-sm text-gray-600">AI-powered analysis & optimization</p>
-                                </div>
-                            </div>
-                            <div class="border-t border-gray-200 pt-4">
-                                <div class="flex items-center justify-between mb-2">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-tachometer-alt text-green-600 mr-2"></i>
-                                        <span class="text-sm font-medium">Review Speed</span>
-                                    </div>
-                                    <div class="w-32 bg-gray-200 rounded-full h-2.5">
-                                        <div class="bg-green-600 h-2.5 rounded-full" style="width: 85%"></div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between mb-2">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-chart-line text-blue-600 mr-2"></i>
-                                        <span class="text-sm font-medium">Accuracy</span>
-                                    </div>
-                                    <div class="w-32 bg-gray-200 rounded-full h-2.5">
-                                        <div class="bg-blue-600 h-2.5 rounded-full" style="width: 87%"></div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-coins text-yellow-600 mr-2"></i>
-                                        <span class="text-sm font-medium">Cost Savings</span>
-                                    </div>
-                                    <div class="w-32 bg-gray-200 rounded-full h-2.5">
-                                        <div class="bg-yellow-600 h-2.5 rounded-full" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                
+                <div class="tab-content" id="compliance">
+                    <div class="expertise-icon-large">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="expertise-title-large">Data Privacy & Compliance</h3>
+                    <div class="expertise-details">
+                        <p>I've developed knowledge in privacy regulations, particularly the Digital Personal Data Protection Act, 2023:</p>
+                        <ul class="expertise-list">
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Contributed to discussions on data privacy alignment with DPDPA 2023 and draft Rules</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Helped design and deliver a 4-week certification course on data protection fundamentals</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Participated in compliance efforts by assessing team adherence to policies</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Gained insights into cross-departmental data protection practices</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="tech">
+                    <div class="expertise-icon-large">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="expertise-title-large">Tech Agreement Review</h3>
+                    <div class="expertise-details">
+                        <p>At Samvad Partners, I've been building experience in reviewing technology agreements:</p>
+                        <ul class="expertise-list">
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Learning to review SDK agreements, outsourcing agreements, and terms of use</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Assisting in analyzing privacy policies and NDAs for legal and compliance risks</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Supporting platform launches by researching privacy and IP regulations</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Contributing to policy updates to ensure regulatory compliance</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="strategy">
+                    <div class="expertise-icon-large">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="expertise-title-large">Legal Innovation & Strategy</h3>
+                    <div class="expertise-details">
+                        <p>I've applied my understanding of both legal and tech domains to help professionals connect with technology:</p>
+                        <ul class="expertise-list">
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Developed portfolio websites for lawyers to enhance their online presence</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Offered guidance on digital branding and visibility strategies</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Implemented analytics tools to track and optimize engagement</li>
+                            <li><span class="list-icon"><i class="fas fa-check-circle"></i></span>Researched fintech market trends and emerging regulatory frameworks</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Main Content -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="animate-fadeIn">
-                    <div class="mb-8">
-                        <h2 class="text-3xl font-bold mb-4">The Problem</h2>
-                        <div class="bg-gray-50 rounded-xl p-6 mb-8">
-                            <h3 class="text-xl font-bold mb-4 flex items-center">
-                                <i class="fas fa-exclamation-circle text-red-500 mr-3"></i>
-                                Contract Review Challenges
-                            </h3>
-                            <p class="mb-4">Traditional contract review is time-consuming, error-prone, and requires significant manual effort. Legal teams face challenges with:</p>
-                            <ul class="space-y-2 text-gray-600">
-                                <li class="flex items-start">
-                                    <i class="fas fa-clock text-blue-600 mt-1 mr-3"></i>
-                                    <span>Spending 60-80% of their time on routine document review</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-exclamation-triangle text-blue-600 mt-1 mr-3"></i>
-                                    <span>Human error in identifying critical clauses and risks</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-sync-alt text-blue-600 mt-1 mr-3"></i>
-                                    <span>Inconsistent review standards across different reviewers</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-database text-blue-600 mt-1 mr-3"></i>
-                                    <span>Difficulty in maintaining institutional knowledge</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-rupee-sign text-blue-600 mt-1 mr-3"></i>
-                                    <span>High costs associated with expert legal review</span>
-                                </li>
-                            </ul>
-                        </div>
+    <!-- Journey Section -->
+    <section class="journey" id="journey">
+        <div class="container">
+            <h2 class="section-title fade-in">My Professional Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">August 2024 - Present</p>
+                        <h3 class="timeline-title">Associate (GC) - Samvad Partners</h3>
+                        <p class="timeline-description">
+                            Reviewing technology agreements and advising on privacy concerns and intellectual property regulations for platform launches.
+                        </p>
                     </div>
-                    
-                    <div class="mb-8">
-                        <h2 class="text-3xl font-bold mb-4">The Solution</h2>
-                        <div class="bg-gray-50 rounded-xl p-6">
-                            <h3 class="text-xl font-bold mb-4 flex items-center">
-                                <i class="fas fa-lightbulb text-yellow-500 mr-3"></i>
-                                LexiAI Overview
-                            </h3>
-                            <p class="mb-4">LexiAI uses machine learning and natural language processing to transform contract review:</p>
-                            <ul class="space-y-2 text-gray-600">
-                                <li class="flex items-start">
-                                    <i class="fas fa-magic text-blue-600 mt-1 mr-3"></i>
-                                    <span><span class="font-semibold">Automated Clause Detection:</span> Identifies and extracts key clauses from contracts</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-exclamation text-blue-600 mt-1 mr-3"></i>
-                                    <span><span class="font-semibold">Risk Analysis:</span> Highlights potential issues and non-standard clauses</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <i class="fas fa-comments text-blue-600 mt-1 mr-3"></i>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">November 2023 - February 2024</p>
+                        <h3 class="timeline-title">Independent Legal Tech & Branding Consultant</h3>
+                        <p class="timeline-description">
+                            Developed portfolio websites for lawyers and provided strategic guidance on branding and digital visibility.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">February 2023 - May 2023</p>
+                        <h3 class="timeline-title">Legal Intern - Setu, Bengaluru</h3>
+                        <p class="timeline-description">
+                            Created regulatory repositories for account aggregator modules and conducted product studies for flagship products.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">September 2022</p>
+                        <h3 class="timeline-title">Legal Intern - Ikigai Law</h3>
+                        <p class="timeline-description">
+                            Conducted product research across digital lending applications to ensure compliance with RBI guidelines.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Let's Connect</h2>
+            <p class="contact-description fade-in">
+                I'm always open to discussing new opportunities, innovative legal tech solutions, or how we can collaborate to bridge the gap between law and technology.
+            </p>
+            <a href="mailto:drishtiran7an@gmail.com" class="cta-button fade-in">Send me an email</a>
+            <div class="social-links">
+                <a href="#" class="social-link fade-in">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link fade-in">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link fade-in">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2025 Drishti Ranjan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Scroll effect for navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        // Initial check when page loads
+        window.addEventListener('load', fadeInOnScroll);
+        // Check on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Expertise tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Get the corresponding tab content and activate it
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
