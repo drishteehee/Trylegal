@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,12 +25,12 @@
             box-sizing: border-box;
         }
         
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-        }
+       body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: #f2f5f7;
+}
         
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Montserrat', sans-serif;
@@ -128,8 +129,8 @@
         
         /* Hero Section */
         .hero {
-            padding-top: 8.5rem;
-            padding-bottom: 5rem;
+            padding-top: 7rem;
+            padding-bottom: 3rem;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
             overflow: hidden;
@@ -211,8 +212,8 @@
         
         /* Journey Section */
         .journey {
-            padding: 5rem 0;
-        }
+    padding: 3rem 0;
+}
         
         .section-title {
             text-align: center;
@@ -226,59 +227,70 @@
             text-align: center;
             color: var(--secondary);
             font-size: 1.2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
         
         .journey-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+              display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
         }
         
         .journey-card {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
         .journey-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
         
-        .journey-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: rgba(69, 123, 157, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-            font-size: 1.5rem;
-        }
-        
+       .journey-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(69, 123, 157, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1rem auto; /* This centers it horizontally */
+    color: var(--secondary);
+    font-size: 1.2rem;
+}
         .journey-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .journey-description {
-            color: #6c757d;
-            line-height: 1.7;
-            flex-grow: 1;
-            margin-bottom: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-align: center;
+}
+    .journey-description {
+    color: #6c757d;
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    text-align: justify;
+}
+
+.journey-note {
+    font-style: italic;
+    color: var(--accent);
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(231, 111, 81, 0.3);
+}
         }
         
         .journey-note {
@@ -292,69 +304,81 @@
         }
         
         /* Why This Role Section */
-        .why-role {
-            padding: 5rem 0;
-            background-color: rgba(69, 123, 157, 0.05);
-            position: relative;
-        }
-        
-        .hand-written {
-            font-family: 'Montserrat', cursive;
-            color: var(--accent);
-            transform: rotate(-2deg);
-            display: inline-block;
-            position: absolute;
-            top: 3rem;
-            right: 5%;
-            font-size: 1.2rem;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .why-role-content {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            position: relative;
-        }
-        
-        .quote-icon {
-            position: absolute;
-            top: -20px;
-            left: 30px;
-            width: 40px;
-            height: 40px;
-            background-color: var(--accent);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-        }
-        
-        .quote-highlight {
-            font-size: 1.1rem;
-            color: var(--primary);
-            font-weight: 600;
-            border-left: 3px solid var(--accent);
-            padding-left: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .why-role-paragraphs p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        
+.why-role {
+    padding: 3rem 0;
+    background-color: rgba(69, 123, 157, 0.05);
+    position: relative;
+}
+.why-role-paragraphs p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    text-align: justify;
+}
+.hand-written-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+.hand-written {
+    display: inline-block;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--accent);
+    background-color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    text-align: center;
+}
+.why-role-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.quote-icon {
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.quote-highlight {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 500;
+    font-style: italic;
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    background-color: rgba(69, 123, 157, 0.05);
+}
+
+.why-role-paragraphs p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.why-role-paragraphs p:last-child {
+    margin-bottom: 0;
+}
+
         /* Bring To Table Section */
         .bring-section {
-            padding: 5rem 0;
+            padding: 3rem 0;
         }
         
         .bring-content {
@@ -439,7 +463,7 @@
         
         /* Personal Note Section */
         .personal-note {
-            padding: 5rem 0;
+            padding: 2rem 0;
             background-color: rgba(69, 123, 157, 0.05);
         }
         
@@ -473,25 +497,24 @@
             right: 0;
         }
         
-        .note-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--primary);
-            margin-bottom: 2rem;
-        }
-        
+       .note-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    text-align: justify;
+}
         .commitment-text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #6c757d;
-            margin: 2rem 0;
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: left;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
+  font-size: 1rem; /* Reduced further */
+  line-height: 1.6; /* Tighter line height */
+  color: #6c757d;
+  margin: 1rem 0; /* Reduced vertical margins */
+  background-color: white;
+  padding: 1rem ; /* Reduced padding */
+  border-radius: 10px;
+  text-align: justify;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
         .note-signature {
             display: flex;
             flex-direction: column;
@@ -513,7 +536,7 @@
         
         /* CTA Section */
         .cta-section {
-            padding: 5rem 0;
+            padding: 3rem 0;
             background-color: var(--primary);
             color: white;
             text-align: center;
@@ -573,7 +596,7 @@
         
        /* Contact Section */
        .contact {
-            padding: 5rem 0;
+            padding: 3rem 0;
             text-align: center;
         }
         
@@ -670,6 +693,7 @@
             
             .bring-grid {
                 grid-template-columns: 1fr;
+ gap: 1rem;
             }
         }
         
@@ -743,7 +767,103 @@
             .note-text {
                 font-size: 1.1rem;
             }
-        }
+/* Section styling for visual separation */
+section {
+    position: relative;
+    background-color: white;
+    margin-bottom: 2.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+}
+
+section.hero {
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 2.5rem;
+}
+
+section.why-role, section.personal-note {
+    background-color: rgba(69, 123, 157, 0.05);
+}
+
+.container {
+    padding: 2rem 0;
+}
+.personal-note {
+  padding: 1.5rem 0 1rem 0;
+}
+
+.personal-note .section-title {
+    font-size: 1.8rem; /* Smaller title */
+  margin-bottom: 0.75rem; /* Less space below title */
+}
+
+.note-container {
+  max-width: 800px;
+}
+
+.note-content {
+  padding: 0;
+  position: relative;
+}
+
+.note-content:before, .note-content:after {
+  content: '"';
+  font-family: 'Georgia', serif;
+  font-size: 3rem;
+  color: rgba(69, 123, 157, 0.1);
+  position: absolute;
+  line-height: 1;
+}
+
+.note-content:before {
+  top: -10px;
+  left: 0;
+}
+
+.note-content:after {
+  bottom: -30px;
+  right: 0;
+}
+
+.note-text {
+  font-size: 1.2rem; /* Increased from 0.85rem */
+  line-height: 1.5; /* Slightly increased from 1.3 */
+  color: var(--primary);
+  margin-bottom: 0.8rem; /* Slightly increased from 0.5rem */
+  text-align: justify;
+}
+
+.commitment-text {
+  font-size: 1rem; /* Increased from 0.8rem */
+  line-height: 1.6; /* Slightly increased */
+  color: #6c757d;
+  margin: 1rem 0; /* Slight increase */
+  background-color: white;
+  padding: 0.8rem 1rem; /* Slightly more padding */
+  border-radius: 10px;
+  text-align: justify;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.commitment-text p {
+  margin-bottom: 0.8rem;
+}
+
+.note-signature {
+  margin-top: 1rem; /* Less space above signature */
+}
+
+.note-name {
+  font-size: 1.5rem; /* Increased from 1rem */
+  margin-bottom: 0.25rem;
+}
+
+.note-title {
+  font-size: 0.9rem; /* Smaller title */
+}
+        
     </style>
 </head>
 <body>
@@ -780,24 +900,14 @@
             <p class="section-subtitle fade-in">My path to becoming the bridge between legal and technology worlds hasn't been a straight line—and that's exactly why I'm uniquely qualified for this role.</p>
             
             <div class="journey-grid">
-                <div class="journey-card fade-in">
-                    <div class="journey-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3 class="journey-title">Legal Foundation</h3>
-                    <p class="journey-description">
-                        At Army Institute of Law, I developed a strong foundation in legal principles and critical thinking while nurturing a parallel interest in how technology was reshaping legal practice. I found myself constantly asking: "How could this process be improved through technology?"
-                    </p>
-                    <p class="journey-note">Where my interest in legal technology began to take shape</p>
-                </div>
-                
+                               
                 <div class="journey-card fade-in">
                     <div class="journey-icon">
                         <i class="fas fa-code-branch"></i>
                     </div>
-                    <h3 class="journey-title">The Fintech Experience</h3>
+                    <h3 class="journey-title">Product Interaction</h3>
                     <p class="journey-description">
-                        My internships at Setu, Ikigai Law, and CRED opened my eyes to the powerful intersection of financial technology and legal frameworks. Creating regulatory repositories and conducting product studies showed me firsthand how crucial the bridge between legal and tech truly is.
+                        Internships at Setu, Ikigai Law, and CRED showed me the intersection of product, business, and legal frameworks. Mapping product features to related legislation revealed how crucial bridging legal and tech truly is.
                     </p>
                     <p class="journey-note">Where I first experienced being the "translator" between worlds</p>
                 </div>
@@ -808,7 +918,7 @@
                     </div>
                     <h3 class="journey-title">Building Solutions for Lawyers</h3>
                     <p class="journey-description">
-                        As an Independent Legal Tech & Branding Consultant, I helped lawyers embrace technology. Developing personalized portfolio websites and implementing analytics tools gave me insights into both the resistance and excitement that comes with technological change in legal practice.
+                       As an Independent Legal Tech & Branding Consultant, I helped lawyers adopt technology by creating portfolio websites and implementing analytics, gaining insight into their resistance and excitement toward change.
                     </p>
                     <p class="journey-note">Where I learned to overcome tech adoption challenges</p>
                 </div>
@@ -819,7 +929,7 @@
                     </div>
                     <h3 class="journey-title">Law Firm Perspective</h3>
                     <p class="journey-description">
-                        At Samvad Partners, I've gained valuable experience reviewing technology agreements and advising on privacy and intellectual property regulations. This role has given me perspective on the enterprise-level challenges that law firms face when implementing new technologies.
+                      At Samvad Partners, I’ve gained experience in technology agreements, privacy, and IP regulations, providing insight into the enterprise challenges law firms face with tech adoption.
                     </p>
                     <p class="journey-note">Where I developed a holistic view of legal tech implementation</p>
                 </div>
@@ -828,44 +938,40 @@
     </section>
 
     <!-- Why This Role Section -->
-    <section class="why-role" id="why-role">
-        <div class="container">
-            <h2 class="section-title fade-in">Why This Role Matters to Me</h2>
-            <span class="hand-written fade-in">This is more than just a job application</span>
-            
-            <div class="why-role-content fade-in">
-                <div class="quote-icon">
-                    <i class="fas fa-quote-left"></i>
-                </div>
-                
-                <div class="why-role-paragraphs">
-                    <p>
-                        When I first read <a href="https://trilegal.com/careers/" target="_blank">Trilegal's job description for Manager - Legal Technology</a>, I felt a sense of recognition that's hard to describe. It wasn't just another job posting—it was a description of the exact intersection I've been navigating throughout my career.
-                    </p>
-                    
-                    <div class="quote-highlight">
-                        "As our Manager - Legal Technology, you'll be the bridge between the legal and tech worlds."
-                    </div>
-                    
-                    <p>
-                        <strong>The frustration gap I've witnessed firsthand:</strong> During my time at Samvad Partners and my internships at legal tech companies, I've seen brilliant lawyers limited by outdated technology and tech solutions that fail because they don't truly understand legal workflows. This gap isn't just inefficient—it prevents legal professionals from delivering their best work.
-                    </p>
-                    
-                    <p>
-                        <strong>The moment I knew this was my path:</strong> While helping create the regulatory repository for Setu's account aggregator module, I experienced the power of being the "bridge." Watching the product team's eyes light up when I translated complex regulatory requirements into actionable product features showed me the immense value of having someone who speaks both languages.
-                    </p>
-                    
-                    <p>
-                        <strong>Why Trilegal specifically:</strong> Your firm's commitment to innovation in legal service delivery is evident in how you've structured this role. Most firms try to force lawyers to become technologists or expect technologists to understand legal nuances. But you've recognized the need for a dedicated bridge-builder, someone whose primary skill is connecting these worlds. That's exactly the role I've been preparing for.
-                    </p>
-                    
-                    <p>
-                        <strong>The transformation I want to be part of:</strong> Legal service delivery is at a pivotal moment. The firms that thrive will be those that seamlessly integrate technological innovation while maintaining legal excellence. I want to be at the center of that transformation—not just implementing technologies, but shaping how Trilegal envisions the future of legal services.
-                    </p>
-                </div>
+<section class="why-role" id="why-role">
+    <div class="container">
+        <h2 class="section-title fade-in">Why This Role Matters to Me</h2>
+<div class="hand-written-container">
+  <span class="hand-written fade-in">This is more than just a job application</span>
+</div>
+
+        <div class="why-role-content fade-in">
+            <div class="quote-icon">
+                <i class="fas fa-quote-left"></i>
             </div>
+            
+            <div class="why-role-paragraphs">
+    <p>
+        When I first read <a href="https://www.linkedin.com/jobs/view/4181029161/?refId=vRgdUdKcTAqQp9Un%2B%2BRNDg%3D%3D&trackingId=vRgdUdKcTAqQp9Un%2B%2BRNDg%3D%3D" target="_blank">Trilegal's job description for Manager - Legal Technology</a>, I felt a sense of recognition that's hard to describe. It wasn't just another job posting—it was a description of the exact intersection I've been navigating throughout my career.
+    </p>
+    
+    <div class="quote-highlight">
+        "As our Manager - Legal Technology, you'll be the bridge between the legal and tech worlds."
+    </div>
+    
+    <p>
+        <strong>The frustration gap I've witnessed firsthand:</strong> During my time at Samvad Partners and my internships at legal tech companies, I've seen brilliant lawyers limited by outdated technology and tech solutions that fail because they don't truly understand legal workflows. This gap isn't just inefficient—it prevents legal professionals from delivering their best work.
+    </p>
+    <p>
+        <strong>Why Trilegal specifically:</strong> Your firm's commitment to innovation in legal service delivery is evident in how you've structured this role. Most firms try to force lawyers to become technologists or expect technologists to understand legal nuances. But you've recognized the need for a dedicated bridge-builder, someone whose primary skill is connecting these worlds. That's exactly the role I've been preparing for.
+    </p>
+    <p>
+        <strong>The transformation I want to be part of:</strong> Legal service delivery is at a pivotal moment. The firms that thrive will be those that seamlessly integrate technological innovation while maintaining legal excellence. I want to be at the center of that transformation—not just implementing technologies, but shaping how Trilegal envisions the future of legal services.
+    </p>
+</div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- What I Bring Section -->
     <section class="bring-section" id="bring">
@@ -885,7 +991,7 @@
                                 <li>I help legal teams articulate needs in ways tech vendors understand</li>
                                 <li>I explain technical constraints to legal stakeholders in relatable terms</li>
                                 <li>I map legal requirements to technical specifications</li>
-                                <li>I translate complex compliance requirements into actionable features</li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -900,7 +1006,7 @@
                                 <li>I break complex challenges into manageable components</li>
                                 <li>I identify underlying needs, not just surface-level requests</li>
                                 <li>I think in terms of systems and processes</li>
-                                <li>I balance ideal outcomes with practical constraints</li>
+                               
                             </ul>
                         </div>
                     </div>
@@ -915,7 +1021,7 @@
                                 <li>I communicate complex concepts in clear, accessible language</li>
                                 <li>I develop training materials for different learning styles</li>
                                 <li>I approach change management as essential to implementation</li>
-                                <li>I built curriculum for legal professionals on data privacy</li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -930,7 +1036,7 @@
                                 <li>I actively follow legal technology trends and developments</li>
                                 <li>I maintain a network in both legal and technology fields</li>
                                 <li>I evaluate innovations based on practical value</li>
-                                <li>I find the right solution, not just the newest one</li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -946,18 +1052,14 @@
             
             <div class="note-container fade-in">
                 <div class="note-content">
-                    <p class="note-text">
-                        I don't typically get this excited about job postings. But when I read that Trilegal was looking for someone to bridge legal and technology worlds, I couldn't help but feel like this role was created for me. This isn't just another application—it's me reaching out to say I think we'd do amazing things together.
-                    </p>
                     
-                    <div class="commitment-text">
-                        <p>
+                         <p class="note-text">
                             While I'm particularly excited about the Manager - Legal Technology role, my passion for the intersection of law and technology extends to Trilegal's innovative TMT practice as well. I've always aspired to work with a forward-thinking firm like Trilegal in this space, and would be equally enthusiastic about contributing to the TMT team as an Associate.
                         </p>
-                        <p>
+<p class="note-text">
                             My experience at Samvad Partners, combined with my understanding of data privacy regulations and experience in the fintech ecosystem, has prepared me to add value to Trilegal in either capacity. What matters most to me is the opportunity to be part of an organization that's serious about innovation in legal practice.
                         </p>
-                    </div>
+                    
                     
                     <p class="note-text">
                         I'd love the chance to discuss how my background aligns with your vision for this role. I'm genuinely excited about the possibility of joining your team and helping shape the future of legal service delivery at Trilegal.
