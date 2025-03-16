@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Tech Product Studies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1d3557;
+            --secondary: #457b9d;
+            --accent: #e76f51;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f2f5f7;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Tool List */
+        .tools-section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            font-size: 2.2rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .tool-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .tool-header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(rgba(255,255,255,0.1), transparent 70%);
+            z-index: 0;
+        }
+        
+        .tool-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tool-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tool-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tool-body {
+            padding: 1.8rem;
+        }
+        
+        .tool-description {
+            margin-bottom: 1.8rem;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .view-button {
+            display: block;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 0.9rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .view-button:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        /* Product View */
+        .product-view {
+            display: none;
+            padding: 3rem 0 5rem;
+        }
+        
+        .product-view.active {
+            display: block;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background-color: rgba(29, 53, 87, 0.05);
+        }
+        
+        .back-button i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-button:hover {
+            color: var(--accent);
+            background-color: rgba(231, 111, 81, 0.05);
+        }
+        
+        .product-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .product-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .product-header p {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* UI Mockup */
+        .mockup-container {
+            max-width: 1100px;
+            margin: 0 auto 5rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mockup-container:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(rgba(255,255,255,0.15), transparent 70%);
+        }
+        
+        .mockup-frame {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            height: 600px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 4rem;
+        }
+        
+        .content-section h3 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .content-section h3:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .content-box {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+        
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+        
+        .content-box h3 {
+            color: var(--primary);
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 2px solid rgba(0,0,0,0.05);
+            text-align: left;
+            font-size: 1.6rem;
+        }
+        
+        .content-box h3:after {
+            display: none;
+        }
+        
+        .content-box ul {
+            list-style-type: none;
+        }
+        
+        .content-box li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        
+        .problem-list li:before {
+            content: '\f071';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #f39c12;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+        }
+        
+        .solution-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #2ecc71;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+        }
+        
+        .impact-analysis {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .impact-analysis h3 {
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 2px solid rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+        }
+        
+        .metric-value {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+        
+        .metric-label {
+            font-size: 1rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .timeline-section {
+            margin-top: 4rem;
+            background-color: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .timeline-section h4 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+            font-size: 1.6rem;
+            position: relative;
+        }
+        
+        .timeline-section h4:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0.8rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .timeline-steps {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .timeline-step {
+            text-align: center;
+            position: relative;
+            flex: 1;
+        }
+        
+        .timeline-step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #e0e0e0;
+            z-index: 0;
+        }
+        
+        .step-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1.2rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-step h5 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-step p {
+            font-size: 0.95rem;
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .mockup-frame {
+                height: 500px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .product-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mockup-frame {
+                height: 450px;
+            }
+            
+            .timeline-steps {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .timeline-step:not(:last-child):after {
+                display: none;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mockup-frame {
+                height: 400px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .product-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1>Product Study Page</h1>
+            <p>Explore innovative legal technology solutions designed to transform the legal industry</p>
+        </div>
+    </header>
+    
+    <!-- Tool List -->
+    <section id="tools-section" class="tools-section">
+        <div class="container">
+            <h2 class="section-title">Featured Tools</h2>
+            <div class="tools-container">
+                <!-- LexiAI -->
+                <div class="tool-card" onclick="showProduct('lexiai')">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="tool-title">LexiAI</h3>
+                        <p class="tool-subtitle">Contract Review</p>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-description">AI-powered contract review and risk assessment tool that accelerates legal document analysis while improving accuracy.</p>
+                        <a href="javascript:void(0)" class="view-button" onclick="showProduct('lexiai')">View Study</a>
+                    </div>
+                </div>
+                
+                <!-- CaseGPT -->
+                <div class="tool-card" onclick="showProduct('casegpt')">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="tool-title">CaseGPT</h3>
+                        <p class="tool-subtitle">Legal Research</p>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-description">Advanced semantic search and precedent analysis platform that revolutionizes how legal professionals conduct research.</p>
+                        <a href="javascript:void(0)" class="view-button" onclick="showProduct('casegpt')">View Study</a>
+                    </div>
+                </div>
+                
+                <!-- JusTrack -->
+                <div class="tool-card" onclick="showProduct('justrack')">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="tool-title">JusTrack</h3>
+                        <p class="tool-subtitle">Dispute Resolution</p>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-description">Automated dispute resolution platform that streamlines consumer complaints and reduces case backlogs in the legal system.</p>
+                        <a href="javascript:void(0)" class="view-button" onclick="showProduct('justrack')">View Study</a>
+                    </div>
+                </div>
+                
+                <!-- ClauseFix -->
+                <div class="tool-card" onclick="showProduct('clausefix')">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="tool-title">ClauseFix</h3>
+                        <p class="tool-subtitle">Compliance</p>
+                    </div>
+                    <div class="tool-body">
+                        <p class="tool-description">Automated compliance management system that ensures legal documents stay updated with the latest regulatory changes.</p>
+                        <a href="javascript:void(0)" class="view-button" onclick="showProduct('clausefix')">View Study</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- LexiAI Product View -->
+    <section id="lexiai-view" class="product-view">
+        <div class="container">
+            <a href="javascript:void(0)" class="back-button" onclick="showTools()">
+                <i class="fas fa-arrow-left"></i> Back to All Tools
+            </a>
+            
+            <div class="product-header">
+                <h2>LexiAI: AI-Powered Contract Review</h2>
+                <p>Intelligent automation for contract analysis and risk assessment</p>
+            </div>
+            
+            <!-- UI Mockup -->
+            <div class="mockup-container">
+                <div class="mockup-frame">
+                    <div style="display: flex; flex-direction: column; height: 100%;">
+                        <!-- Header -->
+                        <div style="background-color: #f8f9fa; padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-weight: 600; color: var(--primary);">LexiAI Contract Review</div>
+                            <div style="display: flex; gap: 15px;">
+                                <i class="fas fa-sync-alt" style="color: var(--secondary);"></i>
+                                <i class="fas fa-cog" style="color: var(--secondary);"></i>
+                                <i class="fas fa-user-circle" style="color: var(--secondary);"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Body -->
+                        <div style="display: flex; flex-grow: 1; height: calc(100% - 48px);">
+                            <!-- Contract Panel -->
+                            <div style="flex: 3; padding: 1rem; border-right: 1px solid #e0e0e0; height: 100%; overflow-y: auto;">
+                                <h4 style="margin-bottom: 1rem; color: var(--primary);">CONFIDENTIALITY AGREEMENT</h4>
+                                
+                                <p style="margin-bottom: 0.8rem; font-size: 0.9rem;">This Confidentiality Agreement (the "Agreement") is entered into as of [Date] by and between:</p>
+                                
+                                <p style="margin-bottom: 0.8rem; font-size: 0.9rem;">[Party A], with its principal offices at [Address] ("Disclosing Party")</p>
+                                
+                                <p style="margin-bottom: 0.8rem; font-size: 0.9rem;">and</p>
+                                
+                                <p style="margin-bottom: 0.8rem; font-size: 0.9rem;">[Party B], with its principal offices at [Address] ("Receiving Party")</p>
+                                
+                                <p style="margin-top: 1.5rem; margin-bottom: 0.8rem; font-weight: 600; font-size: 0.9rem;">1. PURPOSE</p>
+                                
+                                <p style="margin-bottom: 0.8rem; font-size: 0.9rem;">The parties wish to explore a potential business relationship in connection with [Business Purpose] (the "Purpose").</p>
+                                
+                                <p style="margin-top: 1.5rem; margin-bottom: 0.8rem; font-weight: 600; font-size: 0.9rem; background-color: rgba(231, 111, 81, 0.1); padding: 0.5rem; border-left: 3px solid #e76f51;">2. CONFIDENTIAL INFORMATION <span style="background-color: #FEF3C7; color: #92400E; border-radius: 4px; padding: 2px 5px; font-size: 0.7rem;">HIGH RISK</span></p>
+                                
+                                <p style="margin-bottom: 0.8rem; font-size: 0.9rem; background-color: rgba(231, 111, 81, 0.1);">"Confidential Information" <span style="color: #457b9d; text-decoration: underline; cursor: pointer;">means any and all non-public information</span>, including but not limited to technical, administrative, financial information disclosed by either party during the term of this agreement.</p>
+                                
+                                <p style="margin-top: 1.5rem; margin-bottom: 0.8rem; font-weight: 600; font-size: 0.9rem; background-color: rgba(69, 123, 157, 0.1); padding: 0.5rem; border-left: 3px solid #457b9d;">3. OBLIGATIONS <span style="background-color: #DBEAFE; color: #1E40AF; border-radius: 4px; padding: 2px 5px; font-size: 0.7rem;">MEDIUM RISK</span></p>
+                                
+                                <p style="margin-bottom: 0.8rem; font-size: 0.9rem; background-color: rgba(69, 123, 157, 0.1);">The Receiving Party shall maintain the Confidential Information in strict confidence for a period of <span style="color: #e76f51; text-decoration: underline; cursor: pointer;">three (3) years</span> from the date of disclosure.</p>
+                            </div>
+                            
+                            <!-- Analysis Panel -->
+                            <div style="flex: 2; padding: 1rem; background-color: #f8f9fa; height: 100%; overflow-y: auto;">
+                                <h4 style="margin-bottom: 1rem; color: var(--primary); display: flex; align-items: center;">
+                                    <i class="fas fa-robot" style="margin-right: 0.5rem; color: var(--accent);"></i> AI Analysis
+                                </h4>
+                                
+                                <div style="background-color: white; border-radius: 6px; padding: 1rem; margin-bottom: 1rem; border-left: 3px solid #e76f51; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <h5 style="margin-bottom: 0.5rem; color: #e76f51; font-size: 0.9rem;">High Risk: Confidentiality Definition</h5>
+                                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">The definition of Confidential Information is overly broad and may be difficult to enforce.</p>
+                                    <p style="font-size: 0.85rem;"><strong>Suggestion:</strong> Specify categories of information considered confidential.</p>
+                                </div>
+                                
+                                <div style="background-color: white; border-radius: 6px; padding: 1rem; margin-bottom: 1rem; border-left: 3px solid #457b9d; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <h5 style="margin-bottom: 0.5rem; color: #457b9d; font-size: 0.9rem;">Medium Risk: Term Duration</h5>
+                                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">3-year term may be insufficient for sensitive IP protection.</p>
+                                    <p style="font-size: 0.85rem;"><strong>Suggestion:</strong> Consider extending to 5 years for technical information.</p>
+                                </div>
+                                
+                                <div style="margin-top: 2rem;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                                        <span>Overall Risk Score:</span>
+                                        <span style="font-weight: 600; color: #e76f51;">68/100</span>
+                                    </div>
+                                    <div style="width: 100%; height: 8px; background-color: #e0e0e0; border-radius: 4px; overflow: hidden;">
+                                        <div style="width: 68%; height: 100%; background-color: #e76f51;"></div>
+                                    </div>
+                                </div>
+                                
+                                <button style="width: 100%; background-color: var(--primary); color: white; border: none; padding: 0.7rem; border-radius: 4px; margin-top: 1.5rem; cursor: pointer; font-weight: 500;">Generate Suggested Revisions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Sections -->
+            <div class="content-section">
+                <h3>Product Analysis</h3>
+                <div class="content-grid">
+                    <div class="content-box">
+                        <h3>Problem Statement</h3>
+                        <ul class="problem-list">
+                            <li>Time-consuming manual contract review (60-80% of attorney time)</li>
+                            <li>Human error in identifying critical clauses</li>
+                            <li>Inconsistent review standards</li>
+                            <li>Knowledge management challenges</li>
+                            <li>High costs of expert legal review</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h3>Solution Overview</h3>
+                        <ul class="solution-list">
+                            <li>Automated clause detection and extraction</li>
+                            <li>Risk analysis and flagging</li>
+                            <li>Language optimization for ambiguous terms</li>
+                            <li>Analytics dashboard across contract portfolio</li>
+                            <li>Version tracking and approval workflows</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="impact-analysis">
+                    <h3>Impact Analysis</h3>
+                    <div class="metrics-grid">
+                 
+                        <div class="metric-card">
+                            <div class="metric-value">70%</div>
+                            <div class="metric-label">Reduction in Research Time</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">Relevant Case Discovery Rate</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">28</div>
+                            <div class="metric-label">Indian States Covered</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">Implementation Phases</div>
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="timeline-section">
+                        <h4>Implementation Timeline</h4>
+                        <div class="timeline-steps">
+                            <div class="timeline-step">
+                                <div class="step-circle">1</div>
+                                <h5>Discovery</h5>
+                                <p>Requirements gathering</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">2</div>
+                                <h5>Setup</h5>
+                                <p>System integration</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">3</div>
+                                <h5>Deployment</h5>
+                                <p>Phased rollout</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">4</div>
+                                <h5>Optimization</h5>
+                                <p>Performance tuning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CaseGPT Product View -->
+    <section id="casegpt-view" class="product-view">
+        <div class="container">
+            <a href="javascript:void(0)" class="back-button" onclick="showTools()">
+                <i class="fas fa-arrow-left"></i> Back to All Tools
+            </a>
+            
+            <div class="product-header">
+                <h2>CaseGPT: AI-Powered Legal Research</h2>
+                <p>Advanced semantic search and precedent analysis</p>
+            </div>
+            
+            <!-- UI Mockup -->
+            <div class="mockup-container">
+                <div class="mockup-frame">
+                    <div style="display: flex; flex-direction: column; height: 100%;">
+                        <!-- Header -->
+                        <div style="background-color: #f8f9fa; padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-weight: 600; color: var(--primary);">CaseGPT Research Assistant</div>
+                            <div style="display: flex; gap: 15px;">
+                                <i class="fas fa-history" style="color: var(--secondary);"></i>
+                                <i class="fas fa-bookmark" style="color: var(--secondary);"></i>
+                                <i class="fas fa-user-circle" style="color: var(--secondary);"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Body -->
+                        <div style="display: flex; flex-grow: 1; height: calc(100% - 48px);">
+                            <!-- Chat Interface -->
+                            <div style="flex: 3; padding: 1rem; border-right: 1px solid #e0e0e0; display: flex; flex-direction: column; height: 100%;">
+                                <!-- Chat History -->
+                                <div style="flex-grow: 1; overflow-y: auto;">
+                                    <!-- User Question -->
+                                    <div style="display: flex; margin-bottom: 1rem;">
+                                        <div style="width: 30px; height: 30px; border-radius: 50%; background-color: #e0e0e0; margin-right: 0.5rem; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-user" style="font-size: 0.7rem; color: #666;"></i>
+                                        </div>
+                                        <div style="background-color: #f0f0f0; padding: 0.7rem; border-radius: 8px; max-width: 80%; font-size: 0.9rem;">
+                                            What are the key precedents regarding enforceability of liquidated damages clauses in Indian construction contracts?
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- AI Response -->
+                                    <div style="display: flex; margin-bottom: 1rem; flex-direction: row-reverse;">
+                                        <div style="width: 30px; height: 30px; border-radius: 50%; background-color: var(--primary); margin-left: 0.5rem; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-robot" style="font-size: 0.7rem; color: white;"></i>
+                                        </div>
+                                        <div style="background-color: #e8f4f8; padding: 0.7rem; border-radius: 8px; max-width: 80%; font-size: 0.9rem;">
+                                            <p style="margin-bottom: 0.5rem;">The key precedents regarding liquidated damages in Indian construction contracts include:</p>
+                                            
+                                            <p style="margin-bottom: 0.3rem; font-weight: 600; font-size: 0.9rem; color: var(--primary);">1. Fateh Chand v. Balkishan Das (1963)</p>
+                                            <p style="margin-bottom: 0.7rem; font-size: 0.85rem;">Supreme Court established that liquidated damages must represent a genuine pre-estimate of loss.</p>
+                                            
+                                            <p style="margin-bottom: 0.3rem; font-weight: 600; font-size: 0.9rem; color: var(--primary);">2. ONGC v. Saw Pipes (2003)</p>
+                                            <p style="margin-bottom: 0.7rem; font-size: 0.85rem;">Supreme Court ruled that liquidated damages can be enforced without proof of actual loss.</p>
+                                            
+                                            <p style="margin-bottom: 0.3rem; font-weight: 600; font-size: 0.9rem; color: var(--primary);">3. Kailash Nath v. DDA (2015)</p>
+                                            <p style="margin-bottom: 0.7rem; font-size: 0.85rem;">Clarified the position that the party claiming damages needs to prove that they suffered loss.</p>
+                                            
+                                            <div style="text-align: right; margin-top: 0.7rem;">
+                                                <button style="background-color: var(--primary); color: white; border: none; padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer;">View Case Network</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- User Follow-up -->
+                                    <div style="display: flex; margin-bottom: 1rem;">
+                                        <div style="width: 30px; height: 30px; border-radius: 50%; background-color: #e0e0e0; margin-right: 0.5rem; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-user" style="font-size: 0.7rem; color: #666;"></i>
+                                        </div>
+                                        <div style="background-color: #f0f0f0; padding: 0.7rem; border-radius: 8px; max-width: 80%; font-size: 0.9rem;">
+                                            How does the Kailash Nath case differ from ONGC v. Saw Pipes?
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Input Area -->
+                                <div style="margin-top: auto; border-top: 1px solid #e0e0e0; padding-top: 1rem;">
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <input type="text" placeholder="Ask a legal research question..." style="flex-grow: 1; padding: 0.7rem; border: 1px solid #ccc; border-radius: 20px; font-size: 0.9rem;">
+                                        <button style="background-color: var(--primary); color: white; border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Case Visualization Panel -->
+                            <div style="flex: 2; padding: 1rem; background-color: #f8f9fa; height: 100%; overflow-y: auto;">
+                                <h4 style="margin-bottom: 1rem; color: var(--primary); font-size: 1rem;">Case Relationship Network</h4>
+                                
+                                <!-- Network Visualization -->
+                                <div style="background-color: white; border-radius: 8px; padding: 1rem; height: 230px; position: relative; margin-bottom: 1.5rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <!-- Main Case Node -->
+                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background-color: var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 0.8rem; text-align: center; z-index: 3;">Kailash Nath v. DDA</div>
+                                    
+                                    <!-- Related Case Nodes -->
+                                    <div style="position: absolute; top: 30%; left: 25%; width: 80px; height: 80px; background-color: var(--secondary); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 0.8rem; text-align: center;">ONGC v. Saw Pipes</div>
+                                    
+                                    <div style="position: absolute; top: 70%; left: 25%; width: 80px; height: 80px; background-color: var(--secondary); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 0.8rem; text-align: center;">Fateh Chand v. Balkishan</div>
+                                    
+                                    <div style="position: absolute; top: 20%; left: 75%; width: 70px; height: 70px; background-color: #a8dadc; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #1d3557; font-size: 0.7rem; text-align: center;">Maula Bux v. UOI</div>
+                                    
+                                    <div style="position: absolute; top: 70%; left: 75%; width: 70px; height: 70px; background-color: #a8dadc; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #1d3557; font-size: 0.7rem; text-align: center;">Sec 74 Cases</div>
+                                    
+                                    <!-- Connection Lines -->
+                                    <div style="position: absolute; top: 50%; left: 50%; width: 25%; height: 2px; background-color: #ddd; transform: rotate(-30deg) translateY(25px);"></div>
+                                    <div style="position: absolute; top: 50%; left: 50%; width: 25%; height: 2px; background-color: #ddd; transform: rotate(30deg) translateY(25px);"></div>
+                                    <div style="position: absolute; top: 50%; left: 50%; width: 25%; height: 2px; background-color: #ddd; transform: rotate(-30deg) translateY(-25px);"></div>
+                                    <div style="position: absolute; top: 50%; left: 50%; width: 25%; height: 2px; background-color: #ddd; transform: rotate(30deg) translateY(-25px);"></div>
+                                </div>
+                                
+                                <h4 style="margin-bottom: 0.7rem; color: var(--primary); font-size: 1rem;">Authority Strength</h4>
+                                
+                                <div style="background-color: white; border-radius: 8px; padding: 0.8rem; margin-bottom: 0.7rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                                        <span>Kailash Nath v. DDA</span>
+                                        <span style="color: var(--primary); font-weight: 500;">92%</span>
+                                    </div>
+                                    <div style="width: 100%; height: 6px; background-color: #e0e0e0; border-radius: 3px;">
+                                        <div style="width: 92%; height: 100%; background-color: var(--primary); border-radius: 3px;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div style="background-color: white; border-radius: 8px; padding: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                                        <span>ONGC v. Saw Pipes</span>
+                                        <span style="color: var(--secondary); font-weight: 500;">86%</span>
+                                    </div>
+                                    <div style="width: 100%; height: 6px; background-color: #e0e0e0; border-radius: 3px;">
+                                        <div style="width: 86%; height: 100%; background-color: var(--secondary); border-radius: 3px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Sections -->
+            <div class="content-section">
+                <h3>Product Analysis</h3>
+                <div class="content-grid">
+                    <div class="content-box">
+                        <h3>Problem Statement</h3>
+                        <ul class="problem-list">
+                            <li>Time-intensive traditional legal research</li>
+                            <li>Difficulty finding relevant precedents</li>
+                            <li>High database access costs</li>
+                            <li>Keyword limitations missing conceptual matches</li>
+                            <li>Challenges in understanding case relationships</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h3>Solution Overview</h3>
+                        <ul class="solution-list">
+                            <li>Semantic search understanding legal concepts</li>
+                            <li>Automated case summarization</li>
+                            <li>Precedent mapping and visualization</li>
+                            <li>Argument strength analysis</li>
+                            <li>Multi-jurisdictional Indian law coverage</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="impact-analysis">
+                    <h3>Impact Analysis</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">70%</div>
+                            <div class="metric-label">Reduction in Research Time</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">Relevant Case Discovery Rate</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">28</div>
+                            <div class="metric-label">Indian States Covered</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">Implementation Phases</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-section">
+                        <h4>Implementation Timeline</h4>
+                        <div class="timeline-steps">
+                            <div class="timeline-step">
+                                <div class="step-circle">1</div>
+                                <h5>Data Collection</h5>
+                                <p>Gathering case data</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">2</div>
+                                <h5>Model Training</h5>
+                                <p>AI development</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">3</div>
+                                <h5>Interface Design</h5>
+                                <p>UX development</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">4</div>
+                                <h5>Launch & Scale</h5>
+                                <p>Deployment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- JusTrack Product View -->
+    <section id="justrack-view" class="product-view">
+        <div class="container">
+            <a href="javascript:void(0)" class="back-button" onclick="showTools()">
+                <i class="fas fa-arrow-left"></i> Back to All Tools
+            </a>
+            
+            <div class="product-header">
+                <h2>JusTrack: Automated Dispute Resolution</h2>
+                <p>Streamlining consumer dispute processes through technology</p>
+            </div>
+            
+            <!-- UI Mockup -->
+            <div class="mockup-container">
+                <div class="mockup-frame">
+                    <div style="display: flex; flex-direction: column; height: 100%;">
+                        <!-- Header -->
+                        <div style="background-color: #f8f9fa; padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-weight: 600; color: var(--primary);">JusTrack: Dispute Management Portal</div>
+                            <div style="display: flex; gap: 15px;">
+                                <i class="fas fa-bell" style="color: var(--secondary);"></i>
+                                <i class="fas fa-envelope" style="color: var(--secondary);"></i>
+                                <i class="fas fa-user-circle" style="color: var(--secondary);"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab Navigation -->
+                        <div style="padding: 0.7rem 1rem; background-color: #f0f0f0; border-bottom: 1px solid #e0e0e0; display: flex; gap: 1.5rem;">
+                            <a href="#" style="color: var(--primary); font-weight: 600; border-bottom: 2px solid var(--accent); padding-bottom: 0.3rem;">Dashboard</a>
+                            <a href="#" style="color: #666;">Case Details</a>
+                            <a href="#" style="color: #666;">Documents</a>
+                            <a href="#" style="color: #666;">Communications</a>
+                            <a href="#" style="color: #666;">Resolution</a>
+                        </div>
+                        
+                        <!-- Body -->
+                        <div style="display: flex; flex-grow: 1; height: calc(100% - 96px);">
+                            <!-- Main Content Area -->
+                            <div style="flex: 3; padding: 1rem; border-right: 1px solid #e0e0e0; height: 100%; overflow-y: auto;">
+                                <h4 style="margin-bottom: 1rem; color: var(--primary);">Consumer Dispute #CD-2023-1458</h4>
+                                
+                                <!-- Status Cards -->
+                                <div style="display: flex; gap: 0.8rem; margin-bottom: 1.5rem;">
+                                    <div style="flex: 1; background-color: #f0f9ff; border-left: 3px solid var(--secondary); padding: 0.8rem; border-radius: 4px;">
+                                        <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.3rem;">Current Status</div>
+                                        <div style="font-weight: 600; color: var(--secondary);">Evidence Review</div>
+                                    </div>
+                                    <div style="flex: 1; background-color: #fff0f0; border-left: 3px solid var(--accent); padding: 0.8rem; border-radius: 4px;">
+                                        <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.3rem;">Time Remaining</div>
+                                        <div style="font-weight: 600; color: var(--accent);">4 days</div>
+                                    </div>
+                                    <div style="flex: 1; background-color: #f0fff4; border-left: 3px solid #2ecc71; padding: 0.8rem; border-radius: 4px;">
+                                        <div style="font-size: 0.8rem; color: #666; margin-bottom: 0.3rem;">Resolution Score</div>
+                                        <div style="font-weight: 600; color: #2ecc71;">76%</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Timeline -->
+                                <h5 style="margin-bottom: 0.8rem; color: var(--primary);">Case Timeline</h5>
+                                <div style="position: relative; padding-left: 2rem;">
+                                    <!-- Timeline Line -->
+                                    <div style="position: absolute; left: 0.5rem; top: 0; bottom: 0; width: 2px; background-color: #e0e0e0;"></div>
+                                    
+                                    <!-- Timeline Items -->
+                                    <div style="margin-bottom: 1rem; position: relative;">
+                                        <div style="position: absolute; left: -2rem; width: 1rem; height: 1rem; border-radius: 50%; background-color: #2ecc71; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-check" style="color: white; font-size: 0.5rem;"></i>
+                                        </div>
+                                        <div style="background-color: white; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                                <div style="font-weight: 600; color: var(--primary);">Case Filed</div>
+                                                <div style="font-size: 0.8rem; color: #666;">10 Jun 2023</div>
+                                            </div>
+                                            <p style="font-size: 0.85rem;">Initial complaint documents submitted and accepted for review.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 1rem; position: relative;">
+                                        <div style="position: absolute; left: -2rem; width: 1rem; height: 1rem; border-radius: 50%; background-color: #2ecc71; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-check" style="color: white; font-size: 0.5rem;"></i>
+                                        </div>
+                                        <div style="background-color: white; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                                <div style="font-weight: 600; color: var(--primary);">Response Received</div>
+                                                <div style="font-size: 0.8rem; color: #666;">24 Jun 2023</div>
+                                            </div>
+                                            <p style="font-size: 0.85rem;">Respondent submitted their statement and supporting documents.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 1rem; position: relative;">
+                                        <div style="position: absolute; left: -2rem; width: 1rem; height: 1rem; border-radius: 50%; background-color: var(--secondary); display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-sync-alt" style="color: white; font-size: 0.5rem;"></i>
+                                        </div>
+                                        <div style="background-color: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem; border-left: 3px solid var(--secondary); box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                                <div style="font-weight: 600; color: var(--primary);">Evidence Review</div>
+                                                <div style="font-size: 0.8rem; color: #666;">In Progress</div>
+                                            </div>
+                                            <p style="font-size: 0.85rem;">AI analysis of submitted documents and evidence verification.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 1rem; position: relative;">
+                                        <div style="position: absolute; left: -2rem; width: 1rem; height: 1rem; border-radius: 50%; background-color: #e0e0e0; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-hourglass" style="color: white; font-size: 0.5rem;"></i>
+                                        </div>
+                                        <div style="background-color: white; border: 1px solid #e0e0e0; border-radius: 4px; padding: 0.8rem; opacity: 0.7; box-shadow: 0 2px 5px rgba(0,0,0,0.03);">
+                                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                                                <div style="font-weight: 600; color: var(--primary);">Resolution Proposal</div>
+                                                <div style="font-size: 0.8rem; color: #666;">Pending</div>
+                                            </div>
+                                            <p style="font-size: 0.85rem;">AI-generated resolution options based on case analysis.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Side Panel -->
+                            <div style="flex: 1; padding: 1rem; background-color: #f8f9fa; height: 100%; overflow-y: auto;">
+                                <h5 style="margin-bottom: 1rem; color: var(--primary);">Case Analytics</h5>
+                                
+                                <!-- Progress Circle -->
+                                <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+                                    <div style="width: 100px; height: 100px; border-radius: 50%; background: conic-gradient(#2ecc71 0% 60%, #f0f0f0 60% 100%); position: relative; display: flex; justify-content: center; align-items: center;">
+                                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: white; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">60%</div>
+                                            <div style="font-size: 0.7rem; color: #666;">Complete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Estimated Timeline -->
+                                <div style="background-color: white; border-radius: 6px; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <h6 style="margin-bottom: 0.7rem; color: var(--primary); font-size: 0.9rem;">Estimated Completion</h6>
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div style="font-size: 0.9rem; color: var(--accent); font-weight: 600;">28 Jul 2023</div>
+                                        <div style="font-size: 0.8rem; color: #666;">18 days remaining</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Document Status -->
+                                <div style="background-color: white; border-radius: 6px; padding: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <h6 style="margin-bottom: 0.7rem; color: var(--primary); font-size: 0.9rem;">Document Status</h6>
+                                    
+                                    <div style="margin-bottom: 0.5rem; font-size: 0.85rem; display: flex; justify-content: space-between;">
+                                        <span>Submitted</span>
+                                        <span style="color: #2ecc71; font-weight: 500;">8/8</span>
+                                    </div>
+                                    <div style="width: 100%; height: 5px; background-color: #e0e0e0; border-radius: 3px; margin-bottom: 1rem;">
+                                        <div style="width: 100%; height: 100%; background-color: #2ecc71; border-radius: 3px;"></div>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 0.5rem; font-size: 0.85rem; display: flex; justify-content: space-between;">
+                                        <span>Verified</span>
+                                        <span style="color: var(--secondary); font-weight: 500;">5/8</span>
+                                    </div>
+                                    <div style="width: 100%; height: 5px; background-color: #e0e0e0; border-radius: 3px;">
+                                        <div style="width: 62.5%; height: 100%; background-color: var(--secondary); border-radius: 3px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Sections -->
+            <div class="content-section">
+                <h3>Product Analysis</h3>
+                <div class="content-grid">
+                    <div class="content-box">
+                        <h3>Problem Statement</h3>
+                        <ul class="problem-list">
+                            <li>Lengthy consumer dispute processes</li>
+                            <li>High case backlogs in Indian courts</li>
+                            <li>Inconsistent resolution standards</li>
+                            <li>Poor tracking and visibility for parties</li>
+                            <li>Limited accessibility for rural consumers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h3>Solution Overview</h3>
+                        <ul class="solution-list">
+                            <li>Automated case intake and classification</li>
+                            <li>AI-powered case assessment</li>
+                            <li>Resolution timeline tracking</li>
+                            <li>Document generation and management</li>
+                            <li>Regulatory compliance monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="impact-analysis">
+                    <h3>Impact Analysis</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">78%</div>
+                            <div class="metric-label">Faster Dispute Resolution</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">92%</div>
+                            <div class="metric-label">User Satisfaction</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3.5x</div>
+                            <div class="metric-label">More Cases Processed</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">Implementation Phases</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-section">
+                        <h4>Implementation Timeline</h4>
+                        <div class="timeline-steps">
+                            <div class="timeline-step">
+                                <div class="step-circle">1</div>
+                                <h5>Analysis</h5>
+                                <p>Process mapping</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">2</div>
+                                <h5>Development</h5>
+                                <p>Platform building</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">3</div>
+                                <h5>Pilot</h5>
+                                <p>Initial deployment</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">4</div>
+                                <h5>Scale</h5>
+                                <p>Full implementation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ClauseFix Product View -->
+    <section id="clausefix-view" class="product-view">
+        <div class="container">
+            <a href="javascript:void(0)" class="back-button" onclick="showTools()">
+                <i class="fas fa-arrow-left"></i> Back to All Tools
+            </a>
+            
+            <div class="product-header">
+                <h2>ClauseFix: Compliance Automation</h2>
+                <p>Keeping legal documents updated with regulatory changes</p>
+            </div>
+            
+            <!-- UI Mockup -->
+            <div class="mockup-container">
+                <div class="mockup-frame">
+                    <div style="display: flex; flex-direction: column; height: 100%;">
+                        <!-- Header -->
+                        <div style="background-color: #f8f9fa; padding: 1rem; border-bottom: 1px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="font-weight: 600; color: var(--primary);">ClauseFix: Compliance Manager</div>
+                            <div style="display: flex; gap: 15px;">
+                                <i class="fas fa-bell" style="color: var(--secondary);"></i>
+                                <i class="fas fa-cog" style="color: var(--secondary);"></i>
+                                <i class="fas fa-user-circle" style="color: var(--secondary);"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Body -->
+                        <div style="display: flex; flex-grow: 1; height: calc(100% - 48px);">
+                            <!-- Left Panel - Document Tree -->
+                            <div style="flex: 1; padding: 1rem; border-right: 1px solid #e0e0e0; height: 100%; overflow-y: auto;">
+                                <h5 style="margin-bottom: 1rem; color: var(--primary);">Document Library</h5>
+                                
+                                <div style="margin-bottom: 0.7rem;">
+                                    <input type="text" placeholder="Search documents..." style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; font-size: 0.8rem;">
+                                </div>
+                                
+                                <!-- Document Tree -->
+                                <div>
+                                    <div style="margin-bottom: 0.7rem;">
+                                        <div style="font-weight: 500; color: var(--primary); cursor: pointer; display: flex; align-items: center;">
+                                            <i class="fas fa-folder-open" style="margin-right: 0.5rem; color: var(--secondary); font-size: 0.8rem;"></i> Corporate Templates
+                                        </div>
+                                        <div style="padding-left: 1.3rem;">
+                                            <div style="margin-top: 0.5rem; display: flex; align-items: center; color: #666; font-size: 0.85rem; cursor: pointer;">
+                                                <i class="fas fa-file-alt" style="margin-right: 0.5rem; font-size: 0.8rem;"></i> Employment Contracts
+                                            </div>
+                                            <div style="margin-top: 0.5rem; display: flex; align-items: center; color: var(--accent); font-size: 0.85rem; font-weight: 500; cursor: pointer;">
+                                                <i class="fas fa-file-alt" style="margin-right: 0.5rem; font-size: 0.8rem;"></i> Privacy Policy
+                                            </div>
+                                            <div style="margin-top: 0.5rem; display: flex; align-items: center; color: #666; font-size: 0.85rem; cursor: pointer;">
+                                                <i class="fas fa-file-alt" style="margin-right: 0.5rem; font-size: 0.8rem;"></i> Terms of Service
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 0.7rem;">
+                                        <div style="font-weight: 500; color: var(--primary); cursor: pointer; display: flex; align-items: center;">
+                                            <i class="fas fa-folder" style="margin-right: 0.5rem; color: var(--secondary); font-size: 0.8rem;"></i> Client Documents
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="margin-bottom: 0.7rem;">
+                                        <div style="font-weight: 500; color: var(--primary); cursor: pointer; display: flex; align-items: center;">
+                                            <i class="fas fa-folder" style="margin-right: 0.5rem; color: var(--secondary); font-size: 0.8rem;"></i> Regulatory References
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Center Panel - Document Editor -->
+                            <div style="flex: 2; padding: 1rem; border-right: 1px solid #e0e0e0; height: 100%; overflow-y: auto;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                    <h5 style="color: var(--primary);">Privacy Policy</h5>
+                                    <div>
+                                        <button style="background-color: var(--primary); color: white; border: none; padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer; margin-left: 0.5rem;">Save</button>
+                                        <button style="background-color: white; color: var(--primary); border: 1px solid var(--primary); padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer; margin-left: 0.5rem;">Version History</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Document Content -->
+                                <div style="border: 1px solid #e0e0e0; border-radius: 4px; padding: 1rem; height: calc(100% - 50px); overflow-y: auto;">
+                                    <p style="margin-bottom: 1rem; font-weight: 600; font-size: 1rem;">Privacy Policy</p>
+                                    
+                                    <p style="margin-bottom: 0.7rem; font-size: 0.9rem;">Last Updated: July 10, 2023</p>
+                                    
+                                    <p style="margin-bottom: 0.7rem; font-size: 0.9rem;">This Privacy Policy describes how we collect, use, and share your personal information when you use our services.</p>
+                                    
+                                    <p style="margin-top: 1rem; margin-bottom: 0.7rem; font-weight: 600; font-size: 0.9rem;">1. INFORMATION WE COLLECT</p>
+                                    
+                                    <p style="margin-bottom: 0.7rem; font-size: 0.9rem;">We collect information you provide directly to us, such as when you create an account, contact us for support, or participate in surveys.</p>
+                                    
+                                    <p style="margin-top: 1rem; margin-bottom: 0.7rem; font-weight: 600; font-size: 0.9rem; background-color: rgba(231, 111, 81, 0.1); padding: 0.5rem; border-left: 3px solid #e76f51;">2. DATA PROCESSING <span style="background-color: #FEF3C7; color: #92400E; border-radius: 4px; padding: 2px 5px; font-size: 0.7rem;">UPDATE REQUIRED</span></p>
+                                    
+                                    <p style="margin-bottom: 0.7rem; font-size: 0.9rem; background-color: rgba(231, 111, 81, 0.1);"><span style="color: #cc0000; text-decoration: line-through;">We process your data in accordance with the Data Protection Act of 2018.</span> <span style="color: #006600;">We process your data in accordance with the Personal Data Protection Act of 2023 and maintain appropriate technical and organizational measures to protect your personal information.</span></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Right Panel - Compliance Updates -->
+                            <div style="flex: 1; padding: 1rem; background-color: #f8f9fa; height: 100%; overflow-y: auto;">
+                                <h5 style="margin-bottom: 1rem; color: var(--primary);">Compliance Updates</h5>
+                                
+                                <div style="background-color: white; border-radius: 6px; padding: 1rem; margin-bottom: 1rem; border-left: 3px solid #e76f51; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <h6 style="color: #e76f51; font-size: 0.9rem;">Data Processing Update</h6>
+                                        <span style="font-size: 0.75rem; color: #666;">3 days ago</span>
+                                    </div>
+                                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">The Personal Data Protection Act 2023 now replaces the Data Protection Act 2018.</p>
+                                    <div style="text-align: right;">
+                                        <button style="background-color: #e76f51; color: white; border: none; padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Apply Update</button>
+                                    </div>
+                                </div>
+                                
+                                <div style="background-color: white; border-radius: 6px; padding: 1rem; margin-bottom: 1rem; border-left: 3px solid #457b9d; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <h6 style="color: #457b9d; font-size: 0.9rem;">Cookie Consent</h6>
+                                        <span style="font-size: 0.75rem; color: #666;">1 week ago</span>
+                                    </div>
+                                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">New requirements for explicit cookie consent under IT Rules 2023.</p>
+                                    <div style="text-align: right;">
+                                        <button style="background-color: #457b9d; color: white; border: none; padding: 0.3rem 0.7rem; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">View Changes</button>
+                                    </div>
+                                </div>
+                                
+                                <h5 style="margin: 1.5rem 0 1rem; color: var(--primary);">Compliance Status</h5>
+                                
+                                <div style="margin-bottom: 1rem;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem; font-size: 0.85rem;">
+                                        <span>Overall Compliance:</span>
+                                        <span style="color: #e67e22; font-weight: 500;">86%</span>
+                                    </div>
+                                    <div style="width: 100%; height: 6px; background-color: #e0e0e0; border-radius: 3px;">
+                                        <div style="width: 86%; height: 100%; background-color: #e67e22; border-radius: 3px;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div style="font-size: 0.85rem; margin-bottom: 0.5rem; display: flex; align-items: center;">
+                                    <i class="fas fa-exclamation-triangle" style="color: #e76f51; margin-right: 0.5rem;"></i>
+                                    <span>1 critical update required</span>
+                                </div>
+                                
+                                <div style="font-size: 0.85rem; display: flex; align-items: center;">
+                                    <i class="fas fa-info-circle" style="color: #457b9d; margin-right: 0.5rem;"></i>
+                                    <span>2 recommended updates</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Sections -->
+            <div class="content-section">
+                <h3>Product Analysis</h3>
+                <div class="content-grid">
+                    <div class="content-box">
+                        <h3>Problem Statement</h3>
+                        <ul class="problem-list">
+                            <li>Rapid regulatory changes across jurisdictions</li>
+                            <li>Manual compliance tracking is error-prone</li>
+                            <li>Difficulty in updating multiple documents</li>
+                            <li>Risk of non-compliance penalties</li>
+                            <li>Inconsistent document versioning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-box">
+                        <h3>Solution Overview</h3>
+                        <ul class="solution-list">
+                            <li>Regulatory change monitoring</li>
+                            <li>Automated document scanning</li>
+                            <li>Change recommendations</li>
+                            <li>Version control and audit trails</li>
+                            <li>Compliance dashboard and alerts</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="impact-analysis">
+                    <h3>Impact Analysis</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">95%</div>
+                            <div class="metric-label">Compliance Accuracy</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">82%</div>
+                            <div class="metric-label">Time Saved on Updates</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">₹65L</div>
+                            <div class="metric-label">Risk Mitigation Value</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">Implementation Phases</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-section">
+                        <h4>Implementation Timeline</h4>
+                        <div class="timeline-steps">
+                            <div class="timeline-step">
+                                <div class="step-circle">1</div>
+                                <h5>Integration</h5>
+                                <p>System setup</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">2</div>
+                                <h5>Data Collection</h5>
+                                <p>Regulatory indexing</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">3</div>
+                                <h5>Automation</h5>
+                                <p>Alert system</p>
+                            </div>
+                            <div class="timeline-step">
+                                <div class="step-circle">4</div>
+                                <h5>Expansion</h5>
+                                <p>Multi-jurisdiction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Legal Tech Product Studies | Designed by Drishti</p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for Navigation -->
+    <script>
+        function showTools() {
+            document.getElementById('tools-section').style.display = 'block';
+            document.getElementById('lexiai-view').style.display = 'none';
+            document.getElementById('casegpt-view').style.display = 'none';
+            document.getElementById('justrack-view').style.display = 'none';
+            document.getElementById('clausefix-view').style.display = 'none';
+        }
+        
+        function showProduct(product) {
+            document.getElementById('tools-section').style.display = 'none';
+            document.getElementById('lexiai-view').style.display = 'none';
+            document.getElementById('casegpt-view').style.display = 'none';
+            document.getElementById('justrack-view').style.display = 'none';
+            document.getElementById('clausefix-view').style.display = 'none';
+            
+            document.getElementById(product + '-view').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>           
