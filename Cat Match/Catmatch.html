@@ -1,338 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Personality Matcher</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cat Personality Matcher</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+    body {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-        .container {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    padding: 30px 60px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    max-width: 700px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-}
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 30px 60px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 700px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
 
-        h1 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2.2em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 2.2em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        .cat-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 30px;
-        }
+    .cat-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
 
-        .cat-square {
-            width: 300px;
-            height: 300px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
-            transition: transform 0.3s ease;
-        }
+    .cat-square {
+      width: 300px;
+      height: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
 
-        .cat-square:hover {
-            transform: scale(1.02);
-        }
+    .cat-square:hover {
+      transform: scale(1.02);
+    }
 
-        .cat-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.5s ease;
-        }
+    .cat-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.5s ease;
+    }
 
-        .badge {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(45deg, #f39c12, #d35400);
-    color: white;
-    padding: 6px 14px;
-    font-size: 0.9em;
-    font-weight: bold;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: none;
-    animation: badgeAppear 0.5s ease-out;
-    white-space: nowrap;
-}
+    .badge {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(45deg, #f39c12, #d35400);
+      color: white;
+      padding: 6px 14px;
+      font-size: 0.9em;
+      font-weight: bold;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: none;
+      animation: badgeAppear 0.5s ease-out;
+      white-space: nowrap;
+    }
 
-.sound-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 28px;
-  background: white;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 999;
-  transition: background 0.3s ease;
-}
+    .sound-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 28px;
+      background: white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+      transition: background 0.3s ease;
+    }
 
-.sound-icon:hover {
-  background: #f0f0f0;
-}
+    .sound-icon:hover {
+      background: #f0f0f0;
+    }
 
+    @keyframes badgeAppear {
+      0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
 
-        @keyframes badgeAppear {
-            0% {
-                transform: scale(0) rotate(-180deg);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
-        }
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        .buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    button {
+      padding: 15px 25px;
+      font-size: 1.1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      font-family: inherit;
+    }
 
-        button {
-            padding: 15px 25px;
-            font-size: 1.1em;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            font-family: inherit;
-        }
+    .no-button {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+      color: white;
+    }
 
-        .no-button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-            color: white;
-        }
+    .no-button:hover {
+      background: linear-gradient(45deg, #ff5252, #e53935);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
 
-        .no-button:hover {
-            background: linear-gradient(45deg, #ff5252, #e53935);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-        }
+    .yes-button {
+      background: linear-gradient(45deg, #4ecdc4, #44a08d);
+      color: white;
+    }
 
-        .yes-button {
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
-            color: white;
-        }
+    .yes-button:hover {
+      background: linear-gradient(45deg, #26a69a, #388e3c);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+    }
 
-        .yes-button:hover {
-            background: linear-gradient(45deg, #26a69a, #388e3c);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
-        }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ff6b6b;
+      pointer-events: none;
+    }
 
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ff6b6b;
-            pointer-events: none;
-        }
+    .confetti.blue { background: #4ecdc4; }
+    .confetti.yellow { background: #ffd93d; }
+    .confetti.green { background: #6bcf7f; }
+    .confetti.purple { background: #a8e6cf; }
 
-        .confetti.blue { background: #4ecdc4; }
-        .confetti.yellow { background: #ffd93d; }
-        .confetti.green { background: #6bcf7f; }
-        .confetti.purple { background: #a8e6cf; }
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
 
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        .loading {
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-    </style>
+    .loading {
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🐱 Sparshu's Cat Twin! 🐱</h1>
-        
-        <div class="cat-container">
-            <div class="cat-square">
-                <img id="catImage" class="cat-image" src="" alt="Cute cat photo">
-                <div id="badge" class="badge">Sparshu Approves his Twin!!</div>
-            </div>
-        </div>
+  <div class="container">
+    <h1>🐱 Sparshu's Cat Twin! 🐱</h1>
 
-        <div class="buttons">
-            <button class="no-button" onclick="shuffleCat()">
-                🚫 No, this cat is not cute like me, I am the Cutest.
-            </button>
-            <button class="yes-button" onclick="foundMatch()">
-                ✨ Yes, this cat is almost half as cute as me! ✨
-            </button>
-        </div>
+    <div class="cat-container">
+      <div class="cat-square">
+        <img id="catImage" class="cat-image" src="" alt="Cute cat photo">
+        <div id="badge" class="badge">Sparshu Approves his Twin!!</div>
+      </div>
     </div>
 
-    <script>
-        const catImages = [
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat1.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat2.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat3.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat4.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat5.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat6.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat7.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat8.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat9.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat10.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat11.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat12.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat13.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat14.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat15.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat16.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat17.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat18.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat19.jpeg',
-  'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat20.jpeg'
-];
+    <div class="buttons">
+      <button class="no-button" onclick="shuffleCat()">
+        🚫 No, this cat is not cute like me, I am the Cutest.
+      </button>
+      <button class="yes-button" onclick="foundMatch()">
+        ✨ Yes, this cat is almost half as cute as me! ✨
+      </button>
+    </div>
+  </div>
 
+  <!-- Audio + Sound Toggle -->
+  <audio id="bgMusic" loop autoplay preload="auto">
+    <source src="https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-        let currentImageIndex = 0;
-        let usedImages = new Set();
-        const catImage = document.getElementById('catImage');
-        const badge = document.getElementById('badge');
+  <div id="soundToggle" class="sound-icon" onclick="toggleSound()">
+    🔊
+  </div>
 
-        // Load first image
-        function loadImage() {
-            currentImageIndex = Math.floor(Math.random() * catImages.length);
-            catImage.src = catImages[currentImageIndex];
-            usedImages.add(currentImageIndex);
+  <script>
+    const catImages = [
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat1.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat2.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat3.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat4.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat5.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat6.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat7.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat8.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat9.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat10.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat11.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat12.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat13.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat14.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat15.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat16.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat17.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat18.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat19.jpeg',
+      'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat20.jpeg'
+    ];
+
+    let currentImageIndex = 0;
+    let usedImages = new Set();
+    const catImage = document.getElementById('catImage');
+    const badge = document.getElementById('badge');
+
+    function loadImage() {
+      currentImageIndex = Math.floor(Math.random() * catImages.length);
+      catImage.src = catImages[currentImageIndex];
+      usedImages.add(currentImageIndex);
+    }
+
+    function shuffleCat() {
+      badge.style.display = 'none';
+      catImage.classList.add('loading');
+
+      setTimeout(() => {
+        let newIndex;
+        if (usedImages.size >= catImages.length) {
+          usedImages.clear();
+          usedImages.add(currentImageIndex);
         }
+        do {
+          newIndex = Math.floor(Math.random() * catImages.length);
+        } while (usedImages.has(newIndex));
+        currentImageIndex = newIndex;
+        usedImages.add(currentImageIndex);
+        catImage.src = catImages[currentImageIndex];
+        catImage.classList.remove('loading');
+      }, 200);
+    }
 
-        function shuffleCat() {
-            // Hide badge if showing
-            badge.style.display = 'none';
-            
-            // Add loading effect
-            catImage.classList.add('loading');
-            
-            // Change to random image after brief delay
-            setTimeout(() => {
-                let newIndex;
-                
-                // If we've used all images, reset the set
-                if (usedImages.size >= catImages.length) {
-                    usedImages.clear();
-                    usedImages.add(currentImageIndex); // Keep current image in used set
-                }
-                
-                // Find a new random image that hasn't been used recently
-                do {
-                    newIndex = Math.floor(Math.random() * catImages.length);
-                } while (usedImages.has(newIndex) && usedImages.size < catImages.length);
-                
-                currentImageIndex = newIndex;
-                usedImages.add(currentImageIndex);
-                catImage.src = catImages[currentImageIndex];
-                catImage.classList.remove('loading');
-            }, 200);
-        }
+    function foundMatch() {
+      badge.style.display = 'flex';
+      createConfetti();
+    }
 
-        function foundMatch() {
-            // Show badge
-            badge.style.display = 'flex';
-            
-            // Create confetti
-            createConfetti();
-        }
+    function createConfetti() {
+      const colors = ['', 'blue', 'yellow', 'green', 'purple'];
+      const container = document.querySelector('.container');
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = `confetti ${colors[Math.floor(Math.random() * colors.length)]}`;
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+          confetti.style.animation = 'confetti-fall linear forwards';
+          container.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 3000);
+        }, i * 50);
+      }
+    }
 
-        function createConfetti() {
-            const colors = ['', 'blue', 'yellow', 'green', 'purple'];
-            const container = document.querySelector('.container');
-            
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = `confetti ${colors[Math.floor(Math.random() * colors.length)]}`;
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
-                    confetti.style.animation = 'confetti-fall linear forwards';
-                    
-                    container.appendChild(confetti);
-                    
-                    // Remove confetti after animation
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, 3000);
-                }, i * 50);
-            }
-        }
+    // Background music toggle logic
+    const bgMusic = document.getElementById('bgMusic');
+    const soundToggle = document.getElementById('soundToggle');
+    let isPlaying = true;
 
-        // Initialize
-        loadImage();
-const bgMusic = document.getElementById('bgMusic');
-const soundToggle = document.getElementById('soundToggle');
-let isPlaying = false;
+    function toggleSound() {
+      if (isPlaying) {
+        bgMusic.pause();
+        soundToggle.textContent = '🔇';
+      } else {
+        bgMusic.play();
+        soundToggle.textContent = '🔊';
+      }
+      isPlaying = !isPlaying;
+    }
 
-function toggleSound() {
-  if (isPlaying) {
-    bgMusic.pause();
-    soundToggle.textContent = '🔈'; // Muted
-  } else {
-    bgMusic.play();
-    soundToggle.textContent = '🔊'; // Playing
-  }
-  isPlaying = !isPlaying;
-}
-
-    </script>
-<audio id="bgMusic" loop preload="auto">
-  <source src="https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/background.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-<div id="soundToggle" class="sound-icon" onclick="toggleSound()">
-  🔈
-</div>
-
+    // Load first image
+    loadImage();
+  </script>
 </body>
 </html>
