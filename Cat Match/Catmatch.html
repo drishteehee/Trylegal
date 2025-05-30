@@ -191,47 +191,12 @@
     </div>
 
     <script>
+        // Array of your local cat images (assuming they're named cat1.jpg through cat20.jpg)
         const catImages = [
-            'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1561948955-570b270e7c36?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1558788353-f76d92427f16?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1571566882372-1598d88abd90?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1415369629372-26f2fe60c467?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1472491235688-bdc81a63246e?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1513245543132-31f507417b26?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1548247416-ec66f4900b2e?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1570018144715-43110363d70a?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1585901099755-7ba8a46276ae?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1506755855567-92ff770e8d00?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1493406300581-484b937cdc41?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1571988840298-3b5301d5109b?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1542652735873-fb2825bbd6d0?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1555685812-4b943a5e1b51?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1564135442-e4da8b9b60fa?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1559235038-1b0faee5ee1a?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1577023311546-cdc07a8454d9?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1508109742312-c4d39bd78e59?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1612535932672-aab06b13b0af?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1551717743-49959800b1f6?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1487300001871-12053913949f?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1536500152107-01ab1422f932?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?w=400&h=400&fit=crop',
-            'https://images.unsplash.com/photo-1548366565-6bbab241282d?w=400&h=400&fit=crop'
+            'Images/cat1.jpg', 'Images/cat2.jpg', 'Images/cat3.jpg', 'Images/cat4.jpg', 'Images/cat5.jpg',
+            'Images/cat6.jpg', 'Images/cat7.jpg', 'Images/cat8.jpg', 'Images/cat9.jpg', 'Images/cat10.jpg',
+            'Images/cat11.jpg', 'Images/cat12.jpg', 'Images/cat13.jpg', 'Images/cat14.jpg', 'Images/cat15.jpg',
+            'Images/cat16.jpg', 'Images/cat17.jpg', 'Images/cat18.jpg', 'Images/cat19.jpg', 'Images/cat20.jpg'
         ];
 
         let currentImageIndex = 0;
