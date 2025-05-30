@@ -85,6 +85,28 @@
     white-space: nowrap;
 }
 
+.sound-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 28px;
+  background: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  transition: background 0.3s ease;
+}
+
+.sound-icon:hover {
+  background: #f0f0f0;
+}
+
 
         @keyframes badgeAppear {
             0% {
@@ -175,7 +197,7 @@
         <div class="cat-container">
             <div class="cat-square">
                 <img id="catImage" class="cat-image" src="" alt="Cute cat photo">
-                <div id="badge" class="badge">Sparshu Approved</div>
+                <div id="badge" class="badge">Sparshu Approves his Twin!!</div>
             </div>
         </div>
 
@@ -287,6 +309,30 @@
 
         // Initialize
         loadImage();
+const bgMusic = document.getElementById('bgMusic');
+const soundToggle = document.getElementById('soundToggle');
+let isPlaying = false;
+
+function toggleSound() {
+  if (isPlaying) {
+    bgMusic.pause();
+    soundToggle.textContent = '🔈'; // Muted
+  } else {
+    bgMusic.play();
+    soundToggle.textContent = '🔊'; // Playing
+  }
+  isPlaying = !isPlaying;
+}
+
     </script>
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/background.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<div id="soundToggle" class="sound-icon" onclick="toggleSound()">
+  🔈
+</div>
+
 </body>
 </html>
