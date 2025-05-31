@@ -422,6 +422,64 @@
                 font-size: 12px;
             }
         }
+.instruction-blurb {
+    display: flex;
+    justify-content: center;
+    margin: 0.75rem auto 1.5rem;
+    max-width: 350px;
+}
+
+.instruction-content {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 0.25rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.instruction-text {
+    font-size: 0.65rem;
+    color: #a855f7;
+    font-weight: 300;
+    margin: 0;
+    font-style: italic;
+    opacity: 0.75;
+    line-height: 1;
+}
+
+.instruction-icon {
+    font-size: 0.6rem;
+    opacity: 0.6;
+}
+
+@keyframes gentle-pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.02); }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .instruction-content {
+        padding: 0.3rem 0.8rem;
+        gap: 0.4rem;
+    }
+    
+    .instruction-text {
+        font-size: 0.7rem;
+    }
+    
+    .instruction-icon {
+        font-size: 0.7rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -438,6 +496,13 @@
             <h1>Memory Timeline</h1>
             <p>Its been a pleasure growing up with you, my smolu!</p>
             <div class="header-line"></div>
+<div class="instruction-blurb">
+    <div class="instruction-content">
+        
+        <p class="instruction-text">✨ Ps- make sure you hover over each memory tile for special surprises!</p>
+    
+    </div>
+</div>
         </div>
 
         <!-- Timeline -->

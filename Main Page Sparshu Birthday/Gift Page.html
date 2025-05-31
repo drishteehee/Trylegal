@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gift - Spotify Playlist</title>
+  <style>
+    :root {
+      --glass: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 50%, #ecfdf5 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding-top: 120px;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      padding: 15px 30px;
+      display: flex;
+      gap: 30px;
+      z-index: 1000;
+    }
+
+    .nav-item {
+      color: #7c3aed;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: all 0.3s;
+      font-size: 14px;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      background: var(--glass);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .header h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a855f7, #ec4899, #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      font-size: 1.25rem;
+      color: #6b7280;
+      font-weight: 300;
+    }
+
+    .header-line {
+      width: 6rem;
+      height: 0.25rem;
+      background: linear-gradient(90deg, #ddd6fe, #fbcfe8);
+      margin: 1.5rem auto;
+      border-radius: 9999px;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .text-section {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .text-section:hover {
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .text-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #7c3aed, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-section p {
+      color: #6b7280;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .spotify-section {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .spotify-section:hover {
+      background: rgba(255, 255, 255, 0.75);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .spotify-section h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, #7c3aed, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .music-note {
+      position: absolute;
+      color: #ddd6fe;
+      font-size: 1.5rem;
+      opacity: 0.3;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .music-note:nth-child(1) {
+      top: 10%;
+      left: 15%;
+      animation-delay: 0s;
+    }
+
+    .music-note:nth-child(2) {
+      top: 60%;
+      right: 20%;
+      animation-delay: 2s;
+    }
+
+    .music-note:nth-child(3) {
+      bottom: 20%;
+      left: 25%;
+      animation-delay: 4s;
+    }
+
+    .placeholder-image {
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, #ddd6fe, #fbcfe8);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .placeholder-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    @media (max-width: 1024px) {
+      .main-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .header h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 10px 20px;
+        gap: 20px;
+      }
+      .nav-item {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+      .header h1 {
+        font-size: 2.5rem;
+      }
+      .text-section, .spotify-section {
+        padding: 1.5rem;
+      }
+      .text-section h2 {
+        font-size: 1.5rem;
+      }
+      .text-section p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#hero" class="nav-item">Home</a>
+    <a href="#memories" class="nav-item">Memories</a>
+    <a href="#interactive" class="nav-item">Cat Match</a>
+    <a href="#celebrate" class="nav-item active">Gift</a>
+  </nav>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Gift</h1>
+      <p>Bringing back this playlist we danced on from last year</p>
+      <div class="header-line"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Text Section -->
+      <div class="text-section">
+        <div class="music-note">♪</div>
+        <div class="music-note">♫</div>
+        <div class="music-note">♪</div>
+
+        <h2>Its been a while</h2>
+
+        <p>
+          Thanks for blocking all my access of you, I dont know which part of the world you are in or even where in India your actual house is. I wanted to get you a vv nicu gift, but i think the government took care of that ths time. Cant top the white passport stuff dude.
+        </p>
+
+        <p>
+          These songs have formed an integral part of us. From sow dancing in that buddhe col uncle's house, to stargazing in Marine drive together, it's been such an absolute pleasure loving you and being loved by you, my jaan. Our love was really made for the movie screens.
+        </p>
+
+        <p>
+          Consider this a placeholder gift, until you get back. I am happy to go halfsies on a DJ set turntable thing, or a a biggu TV. Whateever my baba wants. Happy birthday once, again! I made this just in hopes you have something tangible for your birthday, but sorry if some aspects of this suck, I am still new. I love you baba, hope you have the nicestttttttttt year ever! Happy listening! 🎵
+        </p>
+      </div>
+
+      <!-- Spotify + Image Section -->
+      <div class="spotify-section">
+        <h3>Your Special Playlist</h3>
+
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5gMwICpditbZEyzlj6FnAb?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+        <div class="placeholder-image">
+           <img src="https://raw.githubusercontent.com/drishteehee/Trylegal/main/Main%20Page%20Sparshu%20Birthday/Images/Disclaimer.jpg?w=300&h=200&fit=crop">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
