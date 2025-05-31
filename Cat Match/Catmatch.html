@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cat Personality Matcher</title>
   <style>
-    /* === Styles: Same as before, no changes === */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -24,25 +23,9 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-    }
-
-    .nav-container {
-      max-width: 800px;
-      margin: 0 auto;
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding: 0 20px;
-    }
-
-    .nav-pills {
-      display: flex;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50px;
-      padding: 6px;
-      gap: 3px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      gap: 20px;
     }
 
     .nav-item {
@@ -52,7 +35,7 @@
       border-radius: 40px;
       transition: all 0.3s ease;
       font-weight: 500;
-      font-size: 0.85em;
+      font-size: 0.9em;
     }
 
     .nav-item:hover {
@@ -72,7 +55,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 15px 20px 10px;
+      padding: 20px;
     }
 
     .container {
@@ -83,6 +66,7 @@
       text-align: center;
       max-width: 600px;
       width: 100%;
+      position: relative;
     }
 
     h1 {
@@ -102,6 +86,7 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
       border: 2px solid rgba(255, 255, 255, 0.5);
       margin: auto;
+      position: relative;
     }
 
     .cat-image {
@@ -111,14 +96,33 @@
     }
 
     .badge {
-      margin-top: 10px;
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
       background: linear-gradient(45deg, #f59e0b, #d97706);
       color: white;
       padding: 5px 10px;
       font-size: 0.75em;
       font-weight: bold;
       border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
       display: none;
+      animation: badgeAppear 0.5s ease-out;
+      white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      z-index: 5;
+    }
+
+    @keyframes badgeAppear {
+      0% {
+        transform: translateX(-50%) scale(0) rotate(-180deg);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(-50%) scale(1) rotate(0deg);
+        opacity: 1;
+      }
     }
 
     .buttons {
@@ -168,8 +172,8 @@
 </head>
 <body>
 
-  <!-- ✅ WORKING NAVBAR -->
-  <nav class="navbar nav-container nav-pills">
+  <!-- ✅ Navbar with GitHub Pages Links -->
+  <nav class="navbar">
     <a href="https://drishteehee.github.io/Trylegal/Main%20Page%20Sparshu%20Birthday/Revised%20Main%20page.html" class="nav-item">Home</a>
     <a href="https://drishteehee.github.io/Trylegal/Main%20Page%20Sparshu%20Birthday/Timeline%20Page.html" class="nav-item">Timeline</a>
     <a href="https://drishteehee.github.io/Trylegal/Cat%20Match/Catmatch.html" class="nav-item active">Game</a>
@@ -182,8 +186,8 @@
 
       <div class="cat-square">
         <img id="catImage" class="cat-image" src="" alt="Cute cat">
+        <div id="badge" class="badge">Sparshu Approves his Twin!!</div>
       </div>
-      <div id="badge" class="badge">Sparshu Approves his Twin!!</div>
 
       <div class="buttons">
         <button class="no-button" onclick="shuffleCat()">🚫 No, this cat is not cute like me</button>
@@ -192,7 +196,6 @@
     </div>
   </div>
 
-  <!-- Sound and background music -->
   <audio id="bgMusic" loop autoplay preload="auto">
     <source src="https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/background.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
@@ -200,7 +203,6 @@
 
   <div id="soundToggle" class="sound-icon" onclick="toggleSound()">🔊</div>
 
-  <!-- Scripts -->
   <script>
     const catImages = [
       'https://raw.githubusercontent.com/drishteehee/Trylegal/main/Cat%20Match/Images/cat1.jpeg',
@@ -228,6 +230,7 @@
 
     function shuffleCat() {
       badge.style.display = 'none';
+      void badge.offsetWidth; // force reflow to re-trigger animation
       let newIndex;
       do {
         newIndex = Math.floor(Math.random() * catImages.length);
@@ -239,7 +242,7 @@
     }
 
     function foundMatch() {
-      badge.style.display = 'inline-block';
+      badge.style.display = 'flex';
     }
 
     const bgMusic = document.getElementById('bgMusic');
